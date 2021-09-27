@@ -29,4 +29,6 @@ It should install the necessary certificates
 > Unix: `/usr/share/nltk_data/tokenizers`
 >
 >Required libraries:
->inbuild library $ keyboard
+- $ keyboard
+- $ pyjokes
+- $ playsound
