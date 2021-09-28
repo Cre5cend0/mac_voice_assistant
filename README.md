@@ -1,5 +1,5 @@
 ### 1. Brew
-- Run the following in your project terminal
+- Run the following in your project terminal if you do not have bew installed already
 `$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 
 ### 2. Portaudio
@@ -12,7 +12,7 @@
 >Refer to [this link](https://gist.github.com/jiaaro/9767512210a1d80a8a0d#gistcomment-3023216) if this is not working
 
 ###4. NeuralIntents
-`$ pip install neuralintents`
+`$ pip install neuralintents` (Run this only if neuralintents.py file is missing)
 
 ## Start
 While being in the venv `$ python main.py`
@@ -29,6 +29,6 @@ It should install the necessary certificates
 > Unix: `/usr/share/nltk_data/tokenizers`
 >
 >Required libraries:
-- $ keyboard
-- $ pyjokes
-- $ playsound
+- `$ pip install keyboard`
+- `$ pip install pyjokes`
+- `$ pip install playsound`
