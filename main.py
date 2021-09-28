@@ -1,20 +1,12 @@
-import nltk
+import os
 
+from setup import initialize
 from my_assistant import mac
 
 if __name__ == '__main__':
+    clear = lambda: os.system('cls')
 
-    done = False
+    initialize()
 
-    mac.calibrate()
-
-    while not done:
-        message = mac.listen()
-        if message == "quit":
-            done = True
-        else:
-            response = mac.request(message)
-            if response is None:
-                pass
-            else:
-                mac.speak(response)
+    clear()
+    mac.listen()
