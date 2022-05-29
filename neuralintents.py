@@ -5,6 +5,8 @@ from abc import ABCMeta, abstractmethod
 import random
 import json
 import pickle
+from queue import Queue
+
 import numpy as np
 import os
 
@@ -49,6 +51,7 @@ class GenericAssistant(IAssistant):
         self.intents = intents
         self.intent_methods = intent_methods
         self.model_name = model_name
+        self.tasks = Queue(maxsize=10)
 
         if intents.endswith(".json"):
             self.load_json_intents(intents)
@@ -108,7 +111,7 @@ class GenericAssistant(IAssistant):
         sgd = SGD(learning_rate=0.01, decay=1e-6, momentum=0.9, nesterov=True)
         self.model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 
-        self.hist = self.model.fit(np.array(train_x), np.array(train_y), epochs=200, batch_size=5, verbose=1)
+        self.hist = self.model.fit(np.array(train_x), np.array(train_y), epochs=50, batch_size=5, verbose=1)
 
     def save_model(self, model_name=None):
         if model_name is None:
@@ -181,6 +184,9 @@ class GenericAssistant(IAssistant):
         ints = self._predict_class(message)
 
         if ints[0]['intent'] in self.intent_methods.keys():
-            self.intent_methods[ints[0]['intent']]()
+            self.tasks.put(self.intent_methods[ints[0]['intent']])
+            self.tasks.join()
+            return
+            # self.intent_methods[ints[0]['intent']]()
         else:
             return self._get_response(ints, self.intents)

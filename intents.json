@@ -1,7 +1,7 @@
 {"intents": [
   {"tag": "greeting",
-    "patterns": ["Hi", "Hey", "Hi Mac", "How are you", "Is anyone there?", "Hello", "Good day", "Whats up", "Hey", "greetings", "I am back"],
-    "responses": ["Hello!", "Good to see you again!", "Hi there, how can I help?"],
+    "patterns": ["Hi", "Hey", "Hi Mac", "How are you", "Is anyone there?", "Hello", "Good day", "Whats up", "Hey", "greetings", "I am back", "imac", "mach"],
+    "responses": ["Hi Manish", "Hello!", "Good to see you again!", "Hi there, how can I help?"],
     "context_set": ""
   },
   {"tag": "goodbye",
@@ -16,7 +16,7 @@
   },
   {"tag": "set_volume",
     "patterns": ["change my volume", "reduce volume", "set volume", "increase volume"],
-    "responses": ["what shall I set the volume to?"],
+    "responses": ["what shall I set the volume to"],
     "context_set": ""
   },
   {"tag": "set_name",

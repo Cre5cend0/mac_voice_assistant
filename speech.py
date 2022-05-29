@@ -5,7 +5,6 @@ import threading
 engine = tts.init()
 
 
-
 def set_rate(wpm=160):  # setting default speech rate for assistant
     engine.setProperty('rate', wpm)
 
@@ -16,7 +15,7 @@ def set_voice(index=7):  # setting default voice for assistant
 
 
 def speak(text):
-    t1 = threading.Thread(target=engine.say, args= (text,))
+    t1 = threading.Thread(target=engine.say, args=(text,))
     t1.start()
     t1.join()
     engine.runAndWait()
