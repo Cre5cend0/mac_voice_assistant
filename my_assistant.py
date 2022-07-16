@@ -4,7 +4,7 @@ import sys
 import threading
 import time
 import pyjokes
-
+import settings as se
 from queue import Queue, LifoQueue
 import speech_recognition as sr
 from neuralintents import GenericAssistant
@@ -29,7 +29,7 @@ class Assistant(GenericAssistant):
 
         self.recognizer = sr.Recognizer()
         self.microphone = sr.Microphone()
-        self.recognizer.energy_threshold = 4000
+        self.recognizer.energy_threshold = 700
         self.recognizer.dynamic_energy_threshold = True
         self.recognizer.dynamic_energy_adjustment_damping = 0.15
         self.recognizer.dynamic_energy_adjustment_ratio = 1.5
@@ -41,14 +41,15 @@ class Assistant(GenericAssistant):
         self.engine.setProperty('rate', self.default_speak_rate)
         self.speech_voices = self.engine.getProperty('voices')
         self.engine.setProperty('voice', self.speech_voices[self.default_voice].id)
+        self._lock = threading.Lock()
 
     #  +++++++++++++++++++ Core methods  +++++++++++++++++++++++ #
     def set_intent_methods(self, intent_methods):
         self.intent_methods = intent_methods
 
     def calibrate(self):
-        CALIBRATED = False
-        while not CALIBRATED:
+        se.CALIBRATED = False
+        while not se.CALIBRATED:
             with self.microphone as source:
                 print("We need to calibrate your voice at least once before we start the program.")
                 time.sleep(2)
@@ -63,7 +64,8 @@ class Assistant(GenericAssistant):
             try:
                 text = self.recognizer.recognize_google(audio)
                 if text:
-                    CALIBRATED = True
+                    se.CALIBRATED = True
+                    print(f'You said: {text}')
                     print('Voice calibrated')
                     break
             except sr.UnknownValueError:
@@ -75,9 +77,11 @@ class Assistant(GenericAssistant):
     def callback(self, recognizer, audio):  # this is called from the background thread
         try:  # recognize speech using Google Speech Recognition
             logging.info('Requesting callback')
+            CALLBACK_THREAD = threading.currentThread()
+            CALLBACK_THREAD.setName('Callback')
             print('Requesting callback')
-            text = recognizer.recognize_google(
-                audio)  # to use another API key, use `recogniser.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
+            # to use another API key, use `recogniser.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
+            text = recognizer.recognize_google(audio)
             text = text.lower()
             print(text)
             if len(text) > 0:
@@ -91,28 +95,40 @@ class Assistant(GenericAssistant):
         global STOP_LISTENING
         while True:
             logging.info('Listening')
-            try:
+            if not se.LISTENING:
                 STOP_LISTENING = self.recognizer.listen_in_background(self.microphone, self.callback)
-            except AssertionError:
+                se.LISTENING = True
+            else:
                 pass
             playsound("audio_sample_4.wav")
-            command = self.commands.get(block=True, timeout=None)
+            command = self.commands.get(block=True, timeout=30)
             logging.info(f'Executing command:{command}')
             response = self.request(command)
-            logging.info('Getting response')
+            logging.info(f'Getting response:{response}')
             if response is None or response == '':
                 pass
             elif response == 'quit':
-                self.quit()
+                self.responses.put('Goodbye!')
+                self.responses.join()
+                sys.exit(0)
             else:
                 self.responses.put(response)
                 self.responses.join()
+
+    def listen_if_not_listening(self):
+        global STOP_LISTENING
+        if not se.LISTENING:
+            STOP_LISTENING = self.recognizer.listen_in_background(self.microphone, self.callback)
+            se.LISTENING = True
+            playsound("audio_sample_4.wav")
+        return
 
     def speak(self):
         global STOP_LISTENING
         while True:
             text = self.responses.get(block=True, timeout=None)
             STOP_LISTENING(wait_for_stop=True)
+            se.LISTENING = False
             logging.info('Speaking')
             self.engine.say(text)
             if self.engine._inLoop:
@@ -143,16 +159,11 @@ class Assistant(GenericAssistant):
     def set_name(self):
         self.responses.put('What shall I set it to?')
         self.responses.join()
-        name = self.commands.get(block=True, timeout=25)
+        self.listen_if_not_listening()
+        name = self.commands.get(block=True, timeout=15)
         self.name = name
         self.responses.put(f'my name is {self.name}')
         self.responses.join()
-
-    def quit(self):
-        self.responses.put('Goodbye!')
-        self.responses.join()
-        print(threading.enumerate())
-        sys.exit(0)
 
     def cancel_all_commands(self):
         pass
@@ -160,6 +171,7 @@ class Assistant(GenericAssistant):
     #  +++++++++++++++++++ Speech methods  +++++++++++++++++++++++ #
     def set_rate(self, wpm=160):  # setting default speech rate for assistant
         self.engine.setProperty('rate', wpm)
+        print('Setting rate done')
 
     def set_voice(self, index=7):  # setting default voice for assistant
         speech_voices = self.engine.getProperty('voices')
@@ -168,7 +180,8 @@ class Assistant(GenericAssistant):
     def set_volume(self, level=0.7):
         self.responses.put('What shall I set it to?')
         self.responses.join()
-        text = self.commands.get(block=True, timeout=5)
+        self.listen_if_not_listening()
+        text = self.commands.get(block=True, timeout=15)
         sentence_words = self._clean_up_sentence(text)
         print(sentence_words)
         if "%" in sentence_words:

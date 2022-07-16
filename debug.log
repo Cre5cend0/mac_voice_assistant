@@ -1782,3 +1782,665 @@ INFO:2022-05-29 20:29:47,376:root: Listening
 INFO:2022-05-29 20:29:58,587:root: Requesting callback
 INFO:2022-05-29 20:30:00,590:root: Executing command:set your name changed name
 INFO:2022-05-29 20:30:03,363:root: Speaking
+INFO:2022-05-30 00:07:16,541:root: Listening
+INFO:2022-05-30 00:33:11,612:root: Listening
+INFO:2022-05-30 00:33:14,711:root: Requesting callback
+INFO:2022-05-30 00:33:19,374:root: Requesting callback
+INFO:2022-05-30 00:33:19,983:root: Executing command:hai
+INFO:2022-05-30 00:33:20,745:root: Requesting callback
+INFO:2022-05-30 00:33:21,823:root: Getting response:Good to see you again!
+INFO:2022-05-30 00:33:30,416:root: Speaking
+INFO:2022-05-30 00:33:33,489:root: Listening
+INFO:2022-05-30 00:33:34,697:root: Requesting callback
+INFO:2022-05-30 00:33:37,228:root: Requesting callback
+INFO:2022-05-30 00:33:49,930:root: Requesting callback
+INFO:2022-05-30 00:33:51,523:root: Executing command:how are you how are you
+INFO:2022-05-30 00:33:51,564:root: Getting response:Hi there, how can I help?
+INFO:2022-05-30 00:35:55,756:root: Listening
+INFO:2022-05-30 00:36:00,132:root: Requesting callback
+INFO:2022-05-30 00:36:00,603:root: Executing command:hello
+INFO:2022-05-30 00:36:02,098:root: Getting response:Good to see you again!
+INFO:2022-05-30 00:36:02,544:root: Speaking
+INFO:2022-05-30 00:36:05,627:root: Listening
+INFO:2022-05-30 00:36:08,240:root: Requesting callback
+INFO:2022-05-30 00:36:08,715:root: Executing command:what's the time
+INFO:2022-05-30 00:36:10,190:root: Speaking
+INFO:2022-05-30 00:36:13,196:root: Getting response:None
+INFO:2022-05-30 00:36:13,197:root: Listening
+INFO:2022-05-30 00:36:14,531:root: Requesting callback
+INFO:2022-05-30 00:36:53,794:root: Requesting callback
+INFO:2022-05-30 00:36:57,713:root: Executing command:set your name is anyone there
+INFO:2022-05-30 00:38:54,522:root: Listening
+INFO:2022-05-30 00:38:55,767:root: Requesting callback
+INFO:2022-05-30 00:38:59,247:root: Requesting callback
+INFO:2022-05-30 00:38:59,672:root: Executing command:hello
+INFO:2022-05-30 00:39:01,137:root: Getting response:Good to see you again!
+INFO:2022-05-30 00:39:01,745:root: Speaking
+INFO:2022-05-30 00:39:04,826:root: Listening
+INFO:2022-05-30 00:39:09,553:root: Requesting callback
+INFO:2022-05-30 00:39:10,492:root: Executing command:how is my day
+INFO:2022-05-30 00:39:10,529:root: Getting response:Hello!
+INFO:2022-05-30 00:39:11,890:root: Speaking
+INFO:2022-05-30 00:39:14,898:root: Listening
+INFO:2022-05-30 00:39:16,700:root: Requesting callback
+INFO:2022-05-30 00:39:21,712:root: Requesting callback
+INFO:2022-05-30 00:39:22,562:root: Executing command:tell me something
+INFO:2022-05-30 00:39:26,748:root: Speaking
+INFO:2022-05-30 00:39:29,756:root: Getting response:None
+INFO:2022-05-30 00:39:29,756:root: Listening
+INFO:2022-05-30 00:39:35,157:root: Requesting callback
+INFO:2022-05-30 00:39:37,015:root: Executing command:earrings tools windows on it
+INFO:2022-05-30 00:39:37,076:root: Getting response:Please let me calibrate your voice again
+INFO:2022-05-30 00:39:38,006:root: Speaking
+INFO:2022-05-30 00:39:41,013:root: Listening
+INFO:2022-05-30 00:39:44,606:root: Requesting callback
+INFO:2022-05-30 00:39:45,513:root: Executing command:ok bye
+INFO:2022-05-30 00:39:50,823:root: Speaking
+INFO:2022-05-30 00:55:53,223:root: Listening
+INFO:2022-05-30 00:56:02,525:root: Requesting callback
+INFO:2022-05-30 00:56:04,181:root: Executing command:awesome how are you
+INFO:2022-05-30 00:56:05,798:root: Getting response:Hello!
+INFO:2022-05-30 00:56:06,792:root: Speaking
+INFO:2022-05-30 00:56:09,877:root: Listening
+INFO:2022-05-30 00:56:23,263:root: Requesting callback
+INFO:2022-05-30 00:57:39,918:root: Listening
+INFO:2022-05-30 00:57:48,033:root: Requesting callback
+INFO:2022-05-30 00:57:49,544:root: Executing command:awesome how are you
+INFO:2022-05-30 00:57:51,014:root: Getting response:Hi there, how can I help?
+INFO:2022-05-30 00:57:51,448:root: Speaking
+INFO:2022-05-30 00:57:54,532:root: Listening
+INFO:2022-05-30 00:57:55,850:root: Requesting callback
+INFO:2022-05-30 00:58:05,482:root: Requesting callback
+INFO:2022-05-30 00:58:07,264:root: Executing command:what's happening in life
+INFO:2022-05-30 00:58:07,302:root: Getting response:Go on...
+INFO:2022-05-30 00:58:09,983:root: Speaking
+INFO:2022-05-30 00:58:12,991:root: Listening
+INFO:2022-05-30 00:58:17,167:root: Requesting callback
+INFO:2022-05-30 00:58:18,217:root: Executing command:set your name
+INFO:2022-05-30 00:58:25,818:root: Speaking
+INFO:2022-05-30 00:58:30,027:root: Requesting callback
+INFO:2022-05-30 00:58:33,486:root: Requesting callback
+INFO:2022-05-30 00:58:36,379:root: Speaking
+INFO:2022-05-30 00:58:39,383:root: Getting response:None
+INFO:2022-05-30 00:58:39,383:root: Listening
+INFO:2022-05-30 00:58:41,951:root: Requesting callback
+INFO:2022-05-30 00:58:46,945:root: Requesting callback
+INFO:2022-05-30 00:58:47,998:root: Executing command:what's your name
+INFO:2022-05-30 00:59:18,329:root: Speaking
+INFO:2022-05-30 00:59:24,728:root: Requesting callback
+INFO:2022-05-30 00:59:31,020:root: Requesting callback
+INFO:2022-05-30 00:59:33,633:root: Speaking
+INFO:2022-05-30 00:59:36,640:root: Getting response:None
+INFO:2022-05-30 00:59:36,640:root: Listening
+INFO:2022-05-30 01:01:20,735:root: Listening
+INFO:2022-05-30 01:01:24,482:root: Requesting callback
+INFO:2022-05-30 01:01:25,321:root: Executing command:hi mike
+INFO:2022-05-30 01:01:26,380:root: Requesting callback
+INFO:2022-05-30 01:01:26,870:root: Getting response:Hi Manish
+INFO:2022-05-30 01:01:27,301:root: Speaking
+INFO:2022-05-30 01:01:30,381:root: Listening
+INFO:2022-05-30 01:01:35,635:root: Requesting callback
+INFO:2022-05-30 01:01:36,778:root: Executing command:set you volume
+INFO:2022-05-30 01:01:49,662:root: Speaking
+INFO:2022-05-30 01:01:54,961:root: Requesting callback
+INFO:2022-05-30 01:02:01,420:root: Requesting callback
+INFO:2022-05-30 01:02:17,064:root: Speaking
+INFO:2022-05-30 01:02:20,072:root: Getting response:None
+INFO:2022-05-30 01:02:20,073:root: Listening
+INFO:2022-05-30 01:13:21,821:root: Listening
+INFO:2022-05-30 01:13:23,622:root: Requesting callback
+INFO:2022-05-30 01:13:26,387:root: Requesting callback
+INFO:2022-05-30 01:13:27,297:root: Executing command:set your name
+INFO:2022-05-30 01:13:35,967:root: Speaking
+INFO:2022-05-30 01:13:56,881:root: Requesting callback
+INFO:2022-05-30 01:16:08,313:root: Listening
+INFO:2022-05-30 01:16:10,869:root: Requesting callback
+INFO:2022-05-30 01:16:23,128:root: Requesting callback
+INFO:2022-05-30 01:16:25,304:root: Executing command:set your name set your name
+INFO:2022-05-30 01:16:26,799:root: Speaking
+INFO:2022-05-30 01:18:20,014:root: Listening
+INFO:2022-05-30 01:18:24,000:root: Requesting callback
+INFO:2022-05-30 01:18:24,951:root: Executing command:set your name
+INFO:2022-05-30 01:18:26,412:root: Speaking
+INFO:2022-05-30 01:18:35,652:root: Requesting callback
+INFO:2022-05-30 01:18:37,627:root: Speaking
+INFO:2022-05-30 01:18:40,635:root: Getting response:None
+INFO:2022-05-30 01:18:40,635:root: Listening
+INFO:2022-05-30 01:18:42,973:root: Requesting callback
+INFO:2022-05-30 01:18:45,532:root: Requesting callback
+INFO:2022-05-30 01:18:57,607:root: Requesting callback
+INFO:2022-05-30 01:19:00,008:root: Executing command:how are you missing out
+INFO:2022-05-30 01:19:00,046:root: Getting response:Good to see you again!
+INFO:2022-05-30 01:19:00,046:root: Speaking
+INFO:2022-05-30 01:19:03,050:root: Listening
+INFO:2022-07-02 22:27:01,894:root: Listening
+INFO:2022-07-02 22:27:02,916:root: Requesting callback
+INFO:2022-07-02 22:27:06,978:root: Requesting callback
+INFO:2022-07-02 22:27:08,140:root: Executing command:hi mac
+INFO:2022-07-02 22:27:09,564:root: Getting response:Good to see you again!
+INFO:2022-07-02 22:27:09,564:root: Speaking
+INFO:2022-07-02 22:27:12,671:root: Listening
+INFO:2022-07-02 22:28:45,213:root: Listening
+INFO:2022-07-02 22:28:46,464:root: Requesting callback
+INFO:2022-07-02 22:28:49,274:root: Requesting callback
+INFO:2022-07-02 22:28:50,017:root: Executing command:hai
+INFO:2022-07-02 22:28:53,481:root: Requesting callback
+INFO:2022-07-02 22:28:53,525:root: Getting response:Hi there, how can I help?
+INFO:2022-07-02 22:28:53,525:root: Speaking
+INFO:2022-07-02 22:28:56,609:root: Listening
+INFO:2022-07-02 22:29:03,611:root: Requesting callback
+INFO:2022-07-02 22:29:04,999:root: Executing command:what's the time
+INFO:2022-07-02 22:29:05,054:root: Speaking
+INFO:2022-07-02 22:29:08,057:root: Getting response:None
+INFO:2022-07-02 22:29:08,058:root: Listening
+INFO:2022-07-02 22:29:11,073:root: Requesting callback
+INFO:2022-07-02 22:29:12,039:root: Executing command:what's the time
+INFO:2022-07-02 22:29:12,096:root: Speaking
+INFO:2022-07-02 22:29:15,104:root: Getting response:None
+INFO:2022-07-02 22:29:15,104:root: Listening
+INFO:2022-07-02 22:42:25,077:root: Listening
+INFO:2022-07-02 22:42:26,271:root: Requesting callback
+INFO:2022-07-02 22:42:28,616:root: Requesting callback
+INFO:2022-07-02 22:42:29,364:root: Executing command:hi mac
+INFO:2022-07-02 22:42:29,606:root: Getting response:Hi Manish
+INFO:2022-07-02 22:42:29,606:root: Speaking
+INFO:2022-07-02 22:42:32,690:root: Listening
+INFO:2022-07-02 22:48:09,733:root: Listening
+INFO:2022-07-02 22:48:10,963:root: Requesting callback
+INFO:2022-07-02 22:48:13,959:root: Requesting callback
+INFO:2022-07-02 22:48:14,618:root: Executing command:hai
+INFO:2022-07-02 22:48:14,839:root: Getting response:Hi Manish
+INFO:2022-07-02 22:48:14,840:root: Speaking
+INFO:2022-07-02 22:48:17,928:root: Listening
+INFO:2022-07-02 22:49:00,634:root: Listening
+INFO:2022-07-02 22:49:01,880:root: Requesting callback
+INFO:2022-07-02 22:49:03,670:root: Requesting callback
+INFO:2022-07-02 22:49:04,335:root: Executing command:hai
+INFO:2022-07-02 22:49:04,603:root: Getting response:Good to see you again!
+INFO:2022-07-02 22:49:04,603:root: Speaking
+INFO:2022-07-02 22:49:09,694:root: Listening
+INFO:2022-07-02 22:49:56,126:root: Listening
+INFO:2022-07-02 22:49:57,369:root: Requesting callback
+INFO:2022-07-02 22:49:59,596:root: Requesting callback
+INFO:2022-07-02 22:50:00,265:root: Executing command:hai
+INFO:2022-07-02 22:50:01,702:root: Getting response:Hello!
+INFO:2022-07-02 22:50:01,702:root: Speaking
+INFO:2022-07-02 22:50:04,772:root: Listening
+INFO:2022-07-02 22:51:49,384:root: Listening
+INFO:2022-07-02 22:51:50,626:root: Requesting callback
+INFO:2022-07-02 22:51:52,651:root: Requesting callback
+INFO:2022-07-02 22:51:53,300:root: Executing command:tell me a joke
+INFO:2022-07-02 22:51:54,702:root: Speaking
+INFO:2022-07-02 22:51:57,774:root: Getting response:None
+INFO:2022-07-02 22:51:57,774:root: Listening
+INFO:2022-07-02 22:56:19,588:root: Listening
+INFO:2022-07-02 22:56:20,759:root: Requesting callback
+INFO:2022-07-02 22:56:27,166:root: Requesting callback
+INFO:2022-07-02 22:56:35,133:root: Requesting callback
+INFO:2022-07-02 22:56:36,425:root: Executing command:set rate
+INFO:2022-07-02 22:56:37,831:root: Getting response:None
+INFO:2022-07-02 22:56:37,831:root: Listening
+INFO:2022-07-02 23:01:06,169:root: Listening
+INFO:2022-07-02 23:01:07,255:root: Requesting callback
+INFO:2022-07-02 23:01:09,552:root: Requesting callback
+INFO:2022-07-02 23:01:10,109:root: Executing command:hi mike
+INFO:2022-07-02 23:01:11,678:root: Getting response:Hello!
+INFO:2022-07-02 23:01:11,678:root: Speaking
+INFO:2022-07-02 23:01:14,757:root: Listening
+INFO:2022-07-02 23:01:16,002:root: Requesting callback
+INFO:2022-07-02 23:01:17,997:root: Requesting callback
+INFO:2022-07-02 23:01:18,533:root: Executing command:how are you doing today
+INFO:2022-07-02 23:01:18,572:root: Getting response:Hello!
+INFO:2022-07-02 23:01:18,572:root: Speaking
+INFO:2022-07-02 23:01:21,578:root: Listening
+INFO:2022-07-02 23:01:27,212:root: Requesting callback
+INFO:2022-07-02 23:01:27,850:root: Executing command:how much stocks
+INFO:2022-07-02 23:01:27,885:root: Getting response:Hello!
+INFO:2022-07-02 23:01:27,885:root: Speaking
+INFO:2022-07-02 23:01:30,894:root: Listening
+INFO:2022-07-02 23:01:32,627:root: Requesting callback
+INFO:2022-07-02 23:01:49,068:root: Requesting callback
+INFO:2022-07-02 23:01:51,098:root: Executing command:how much stocks
+INFO:2022-07-02 23:01:51,136:root: Getting response:Hi Manish
+INFO:2022-07-02 23:01:51,136:root: Speaking
+INFO:2022-07-02 23:01:54,139:root: Listening
+INFO:2022-07-02 23:02:16,494:root: Listening
+INFO:2022-07-02 23:02:17,745:root: Requesting callback
+INFO:2022-07-02 23:02:22,853:root: Requesting callback
+INFO:2022-07-02 23:02:23,661:root: Executing command:punjab
+INFO:2022-07-02 23:02:25,125:root: Getting response:Hi there, how can I help?
+INFO:2022-07-02 23:02:25,125:root: Speaking
+INFO:2022-07-02 23:02:28,196:root: Listening
+INFO:2022-07-02 23:04:15,693:root: Listening
+INFO:2022-07-02 23:04:19,947:root: Requesting callback
+INFO:2022-07-02 23:04:21,875:root: Requesting callback
+INFO:2022-07-02 23:04:22,319:root: Executing command:hai
+INFO:2022-07-02 23:04:23,777:root: Getting response:Hi there, how can I help?
+INFO:2022-07-02 23:04:23,778:root: Speaking
+INFO:2022-07-02 23:04:26,841:root: Listening
+INFO:2022-07-02 23:04:31,063:root: Requesting callback
+INFO:2022-07-02 23:04:35,872:root: Requesting callback
+INFO:2022-07-02 23:04:36,556:root: Executing command:interesting life
+INFO:2022-07-02 23:04:36,594:root: Getting response:Hello!
+INFO:2022-07-02 23:04:36,594:root: Speaking
+INFO:2022-07-02 23:04:39,601:root: Listening
+INFO:2022-07-02 23:04:44,433:root: Requesting callback
+INFO:2022-07-02 23:04:52,166:root: Requesting callback
+INFO:2022-07-02 23:04:53,061:root: Executing command:you have no idea do you
+INFO:2022-07-02 23:04:53,099:root: Getting response:Please let me calibrate your voice again
+INFO:2022-07-02 23:04:53,099:root: Speaking
+INFO:2022-07-02 23:04:56,107:root: Listening
+INFO:2022-07-02 23:05:01,114:root: Requesting callback
+INFO:2022-07-02 23:05:06,459:root: Requesting callback
+INFO:2022-07-02 23:05:07,500:root: Executing command:expected 10
+INFO:2022-07-02 23:05:07,538:root: Getting response:Good to see you again!
+INFO:2022-07-02 23:05:07,538:root: Speaking
+INFO:2022-07-02 23:05:10,543:root: Listening
+INFO:2022-07-02 23:05:18,231:root: Requesting callback
+INFO:2022-07-02 23:05:19,185:root: Executing command:not pad no errors now
+INFO:2022-07-02 23:05:19,224:root: Getting response:Please let me calibrate your voice again
+INFO:2022-07-02 23:05:19,225:root: Speaking
+INFO:2022-07-02 23:05:22,231:root: Listening
+INFO:2022-07-02 23:05:26,684:root: Requesting callback
+INFO:2022-07-02 23:05:31,818:root: Requesting callback
+INFO:2022-07-02 23:05:32,691:root: Executing command:awesome
+INFO:2022-07-02 23:05:32,729:root: Getting response:Hi Manish
+INFO:2022-07-02 23:05:32,729:root: Speaking
+INFO:2022-07-02 23:05:35,734:root: Listening
+INFO:2022-07-02 23:05:40,025:root: Requesting callback
+INFO:2022-07-02 23:05:46,782:root: Requesting callback
+INFO:2022-07-02 23:05:47,743:root: Executing command:how will i know you listening
+INFO:2022-07-02 23:05:47,780:root: Getting response:Hello!
+INFO:2022-07-02 23:05:47,780:root: Speaking
+INFO:2022-07-02 23:05:50,788:root: Listening
+INFO:2022-07-02 23:06:01,151:root: Requesting callback
+INFO:2022-07-02 23:06:02,180:root: Executing command:3 seconds to mars
+INFO:2022-07-02 23:06:02,219:root: Getting response:Hello!
+INFO:2022-07-02 23:06:02,219:root: Speaking
+INFO:2022-07-02 23:06:05,222:root: Listening
+INFO:2022-07-02 23:06:11,871:root: Requesting callback
+INFO:2022-07-02 23:06:12,522:root: Executing command:ok bye
+INFO:2022-07-02 23:06:12,562:root: Speaking
+INFO:2022-07-02 23:09:31,585:root: Listening
+INFO:2022-07-02 23:09:35,792:root: Requesting callback
+INFO:2022-07-02 23:09:38,576:root: Requesting callback
+INFO:2022-07-02 23:09:39,137:root: Executing command:awesome how are you
+INFO:2022-07-02 23:09:40,585:root: Getting response:Hi there, how can I help?
+INFO:2022-07-02 23:09:40,586:root: Speaking
+INFO:2022-07-02 23:09:43,655:root: Listening
+INFO:2022-07-02 23:09:50,081:root: Requesting callback
+INFO:2022-07-02 23:09:51,145:root: Executing command:jacket samples kid
+INFO:2022-07-02 23:09:51,185:root: Getting response:Hi Manish
+INFO:2022-07-02 23:09:51,185:root: Speaking
+INFO:2022-07-02 23:09:54,196:root: Listening
+INFO:2022-07-02 23:09:58,456:root: Requesting callback
+INFO:2022-07-02 23:10:04,920:root: Requesting callback
+INFO:2022-07-02 23:10:06,004:root: Executing command:why are you something my stuff
+INFO:2022-07-02 23:10:06,042:root: Getting response:Please let me calibrate your voice again
+INFO:2022-07-02 23:10:06,043:root: Speaking
+INFO:2022-07-02 23:10:09,051:root: Listening
+INFO:2022-07-02 23:10:13,808:root: Requesting callback
+INFO:2022-07-02 23:10:16,015:root: Requesting callback
+INFO:2022-07-02 23:10:16,763:root: Executing command:rate your good
+INFO:2022-07-02 23:10:16,802:root: Getting response:Hi Manish
+INFO:2022-07-02 23:10:16,802:root: Speaking
+INFO:2022-07-02 23:10:19,809:root: Listening
+INFO:2022-07-02 23:10:27,195:root: Requesting callback
+INFO:2022-07-02 23:10:28,028:root: Executing command:ok bye
+INFO:2022-07-02 23:10:28,056:root: Speaking
+INFO:2022-07-02 23:11:59,271:root: Listening
+INFO:2022-07-02 23:12:03,518:root: Requesting callback
+INFO:2022-07-02 23:12:05,730:root: Requesting callback
+INFO:2022-07-02 23:12:06,319:root: Executing command:life is good ha
+INFO:2022-07-02 23:12:07,757:root: Getting response:Hi there, how can I help?
+INFO:2022-07-02 23:12:07,757:root: Speaking
+INFO:2022-07-02 23:12:10,822:root: Listening
+INFO:2022-07-02 23:12:15,047:root: Requesting callback
+INFO:2022-07-02 23:12:17,089:root: Requesting callback
+INFO:2022-07-02 23:12:17,548:root: Executing command:ok bye
+INFO:2022-07-02 23:12:17,587:root: Speaking
+INFO:2022-07-02 23:12:49,156:root: Listening
+INFO:2022-07-02 23:12:53,395:root: Requesting callback
+INFO:2022-07-02 23:12:55,651:root: Requesting callback
+INFO:2022-07-02 23:12:56,049:root: Executing command:how are you
+INFO:2022-07-02 23:12:57,496:root: Getting response:Good to see you again!
+INFO:2022-07-02 23:12:57,496:root: Speaking
+INFO:2022-07-02 23:13:00,566:root: Listening
+INFO:2022-07-02 23:13:04,788:root: Requesting callback
+INFO:2022-07-02 23:13:07,457:root: Requesting callback
+INFO:2022-07-02 23:13:08,185:root: Executing command:can you show me my files
+INFO:2022-07-02 23:13:08,224:root: Getting response:Please let me calibrate your voice again
+INFO:2022-07-02 23:13:08,224:root: Speaking
+INFO:2022-07-02 23:13:11,228:root: Listening
+INFO:2022-07-02 23:13:16,434:root: Requesting callback
+INFO:2022-07-02 23:13:18,617:root: Requesting callback
+INFO:2022-07-02 23:13:21,266:root: Requesting callback
+INFO:2022-07-02 23:13:21,905:root: Executing command:bye
+INFO:2022-07-02 23:13:21,944:root: Speaking
+INFO:2022-07-02 23:16:58,788:root: Listening
+INFO:2022-07-02 23:17:02,877:root: Requesting callback
+INFO:2022-07-02 23:17:05,714:root: Requesting callback
+INFO:2022-07-02 23:17:05,973:root: Executing command:hello
+INFO:2022-07-02 23:17:07,405:root: Getting response:Good to see you again!
+INFO:2022-07-02 23:17:07,405:root: Speaking
+INFO:2022-07-02 23:17:10,470:root: Listening
+INFO:2022-07-02 23:17:16,850:root: Requesting callback
+INFO:2022-07-02 23:17:17,319:root: Executing command:ok bye
+INFO:2022-07-02 23:17:17,358:root: Speaking
+INFO:2022-07-02 23:20:23,688:root: Listening
+INFO:2022-07-02 23:20:26,944:root: Requesting callback
+INFO:2022-07-02 23:20:29,198:root: Requesting callback
+INFO:2022-07-02 23:20:29,605:root: Executing command:hai
+INFO:2022-07-02 23:20:31,183:root: Getting response:Good to see you again!
+INFO:2022-07-02 23:20:31,184:root: Speaking
+INFO:2022-07-02 23:20:34,284:root: Listening
+INFO:2022-07-02 23:20:37,796:root: Requesting callback
+INFO:2022-07-02 23:20:39,050:root: Requesting callback
+INFO:2022-07-02 23:20:41,278:root: Requesting callback
+INFO:2022-07-02 23:20:44,717:root: Requesting callback
+INFO:2022-07-02 23:20:46,735:root: Requesting callback
+INFO:2022-07-02 23:20:47,343:root: Executing command:quit
+INFO:2022-07-02 23:20:47,382:root: Speaking
+INFO:2022-07-02 23:27:10,215:root: Listening
+INFO:2022-07-02 23:27:11,458:root: Requesting callback
+INFO:2022-07-02 23:27:13,594:root: Requesting callback
+INFO:2022-07-02 23:27:14,299:root: Executing command:how are you doing
+INFO:2022-07-02 23:27:15,729:root: Getting response:Hi Manish
+INFO:2022-07-02 23:27:15,729:root: Speaking
+INFO:2022-07-02 23:27:18,794:root: Listening
+INFO:2022-07-02 23:28:37,254:root: Listening
+INFO:2022-07-02 23:28:38,519:root: Requesting callback
+INFO:2022-07-02 23:28:43,396:root: Requesting callback
+INFO:2022-07-02 23:28:46,064:root: Requesting callback
+INFO:2022-07-02 23:28:46,769:root: Executing command:hello
+INFO:2022-07-02 23:28:47,876:root: Requesting callback
+INFO:2022-07-02 23:28:48,275:root: Getting response:Hi there, how can I help?
+INFO:2022-07-02 23:28:48,275:root: Speaking
+INFO:2022-07-02 23:28:51,347:root: Listening
+INFO:2022-07-02 23:28:58,047:root: Requesting callback
+INFO:2022-07-02 23:28:59,371:root: Executing command:tell me a joke
+INFO:2022-07-02 23:28:59,410:root: Speaking
+INFO:2022-07-02 23:29:02,417:root: Getting response:None
+INFO:2022-07-02 23:29:02,417:root: Listening
+INFO:2022-07-02 23:29:04,752:root: Requesting callback
+INFO:2022-07-02 23:29:07,629:root: Requesting callback
+INFO:2022-07-02 23:29:08,351:root: Executing command:ok bye
+INFO:2022-07-02 23:29:08,389:root: Getting response:Sad to see you go :(
+INFO:2022-07-02 23:29:08,389:root: Speaking
+INFO:2022-07-02 23:29:11,393:root: Listening
+INFO:2022-07-02 23:29:59,193:root: Listening
+INFO:2022-07-02 23:30:00,435:root: Requesting callback
+INFO:2022-07-02 23:30:03,087:root: Requesting callback
+INFO:2022-07-02 23:30:08,752:root: Requesting callback
+INFO:2022-07-02 23:30:09,946:root: Executing command:om namah maiya
+INFO:2022-07-02 23:30:11,404:root: Getting response:Good to see you again!
+INFO:2022-07-02 23:30:11,404:root: Speaking
+INFO:2022-07-02 23:30:14,471:root: Listening
+INFO:2022-07-02 23:30:15,831:root: Requesting callback
+INFO:2022-07-02 23:30:19,616:root: Requesting callback
+INFO:2022-07-02 23:30:20,596:root: Executing command:lovely professional university
+INFO:2022-07-02 23:30:20,636:root: Getting response:Hello!
+INFO:2022-07-02 23:30:20,636:root: Speaking
+INFO:2022-07-02 23:30:23,638:root: Listening
+INFO:2022-07-02 23:30:27,663:root: Requesting callback
+INFO:2022-07-02 23:30:29,353:root: Executing command:the scent of you catch no nicely
+INFO:2022-07-02 23:30:29,391:root: Getting response:Please let me calibrate your voice again
+INFO:2022-07-02 23:30:29,392:root: Speaking
+INFO:2022-07-02 23:30:32,398:root: Listening
+INFO:2022-07-02 23:31:16,611:root: Listening
+INFO:2022-07-02 23:31:17,858:root: Requesting callback
+INFO:2022-07-02 23:31:20,851:root: Requesting callback
+INFO:2022-07-02 23:31:21,730:root: Executing command:asam
+INFO:2022-07-02 23:31:23,186:root: Getting response:Hello!
+INFO:2022-07-02 23:31:23,186:root: Speaking
+INFO:2022-07-02 23:31:26,252:root: Listening
+INFO:2022-07-03 00:17:21,022:root: Listening
+INFO:2022-07-03 00:17:22,290:root: Requesting callback
+INFO:2022-07-03 00:17:23,870:root: Requesting callback
+INFO:2022-07-03 00:17:24,493:root: Executing command:hai
+INFO:2022-07-03 00:17:25,938:root: Getting response:Hi there, how can I help?
+INFO:2022-07-03 00:17:25,939:root: Speaking
+INFO:2022-07-03 00:17:29,009:root: Listening
+INFO:2022-07-03 00:17:30,693:root: Requesting callback
+INFO:2022-07-03 00:17:34,225:root: Requesting callback
+INFO:2022-07-03 00:17:35,374:root: Executing command:awesome can you listen to me
+INFO:2022-07-03 00:17:35,413:root: Getting response:Please let me calibrate your voice again
+INFO:2022-07-03 00:17:35,413:root: Speaking
+INFO:2022-07-03 00:17:38,418:root: Listening
+INFO:2022-07-03 00:17:42,773:root: Requesting callback
+INFO:2022-07-03 00:17:43,872:root: Executing command:how much torque smack
+INFO:2022-07-03 00:17:43,910:root: Getting response:Hello!
+INFO:2022-07-03 00:17:43,910:root: Speaking
+INFO:2022-07-03 00:17:46,918:root: Listening
+INFO:2022-07-03 00:17:49,084:root: Requesting callback
+INFO:2022-07-03 00:17:54,476:root: Requesting callback
+INFO:2022-07-03 00:17:55,595:root: Executing command:how my stocks mac
+INFO:2022-07-03 00:17:55,633:root: Getting response:You own the following shares: ABBV, AAPL, FB, NVDA and an ETF of the S&P 500 Index!
+INFO:2022-07-03 00:17:55,633:root: Speaking
+INFO:2022-07-03 00:17:58,636:root: Listening
+INFO:2022-07-03 00:18:03,109:root: Requesting callback
+INFO:2022-07-03 00:18:04,003:root: Executing command:weather
+INFO:2022-07-03 00:18:04,040:root: Getting response:Hi there, how can I help?
+INFO:2022-07-03 00:18:04,040:root: Speaking
+INFO:2022-07-03 00:18:07,046:root: Listening
+INFO:2022-07-03 00:23:38,148:root: Listening
+INFO:2022-07-03 00:23:39,387:root: Requesting callback
+INFO:2022-07-03 00:23:49,770:root: Requesting callback
+INFO:2022-07-03 00:23:50,975:root: Executing command:hello
+INFO:2022-07-03 00:23:52,578:root: Getting response:Hello!
+INFO:2022-07-03 00:23:52,578:root: Speaking
+INFO:2022-07-03 00:23:52,646:root: Listening
+INFO:2022-07-03 00:26:47,619:root: Listening
+INFO:2022-07-03 00:26:48,795:root: Requesting callback
+INFO:2022-07-03 00:26:56,432:root: Requesting callback
+INFO:2022-07-03 00:26:56,780:root: Executing command:hello
+INFO:2022-07-03 00:26:58,301:root: Getting response:Hello!
+INFO:2022-07-03 00:26:58,301:root: Listening
+INFO:2022-07-03 00:26:58,302:root: Speaking
+INFO:2022-07-03 00:27:30,623:root: Listening
+INFO:2022-07-03 00:27:31,870:root: Requesting callback
+INFO:2022-07-03 00:27:34,280:root: Requesting callback
+INFO:2022-07-03 00:27:34,783:root: Executing command:hello
+INFO:2022-07-03 00:27:36,190:root: Getting response:Hello!
+INFO:2022-07-03 00:27:36,190:root: Listening
+INFO:2022-07-03 00:27:36,190:root: Speaking
+INFO:2022-07-03 00:27:40,713:root: Requesting callback
+INFO:2022-07-03 00:27:42,896:root: Requesting callback
+INFO:2022-07-03 00:27:43,408:root: Executing command:assam
+INFO:2022-07-03 00:27:43,446:root: Getting response:Hi Manish
+INFO:2022-07-03 00:27:43,447:root: Listening
+INFO:2022-07-03 00:27:43,447:root: Speaking
+INFO:2022-07-03 00:27:50,673:root: Requesting callback
+INFO:2022-07-03 00:27:51,349:root: Executing command:where is tea from
+INFO:2022-07-03 00:27:51,387:root: Getting response:Hello!
+INFO:2022-07-03 00:27:51,387:root: Listening
+INFO:2022-07-03 00:27:51,388:root: Speaking
+INFO:2022-07-03 00:28:45,698:root: Listening
+INFO:2022-07-03 00:28:46,808:root: Requesting callback
+INFO:2022-07-03 00:28:50,157:root: Requesting callback
+INFO:2022-07-03 00:28:51,023:root: Executing command:friends wow
+INFO:2022-07-03 00:28:52,470:root: Getting response:Hi there, how can I help?
+INFO:2022-07-03 00:28:52,470:root: Listening
+INFO:2022-07-03 00:28:52,470:root: Speaking
+INFO:2022-07-03 00:28:59,175:root: Requesting callback
+INFO:2022-07-03 00:28:59,774:root: Executing command:lovely professional university
+INFO:2022-07-03 00:28:59,811:root: Getting response:Hello!
+INFO:2022-07-03 00:28:59,812:root: Listening
+INFO:2022-07-03 00:28:59,812:root: Speaking
+INFO:2022-07-03 00:32:04,253:root: Listening
+INFO:2022-07-03 00:32:05,358:root: Requesting callback
+INFO:2022-07-03 00:32:08,140:root: Requesting callback
+INFO:2022-07-03 00:32:08,773:root: Executing command:ok
+INFO:2022-07-03 00:32:10,334:root: Getting response:Sad to see you go :(
+INFO:2022-07-03 00:32:10,334:root: Listening
+INFO:2022-07-03 00:32:10,334:root: Speaking
+INFO:2022-07-03 00:32:35,587:root: Listening
+INFO:2022-07-03 00:32:36,738:root: Requesting callback
+INFO:2022-07-03 00:32:38,708:root: Requesting callback
+INFO:2022-07-03 00:32:39,402:root: Executing command:hello
+INFO:2022-07-03 00:32:40,850:root: Getting response:Hi Manish
+INFO:2022-07-03 00:32:40,850:root: Listening
+INFO:2022-07-03 00:32:40,850:root: Speaking
+INFO:2022-07-03 00:42:09,769:root: Listening
+INFO:2022-07-03 00:42:11,037:root: Requesting callback
+INFO:2022-07-03 00:42:13,659:root: Requesting callback
+INFO:2022-07-03 00:42:14,325:root: Executing command:hello
+INFO:2022-07-03 00:42:15,897:root: Getting response:Good to see you again!
+INFO:2022-07-03 00:42:15,897:root: Listening
+INFO:2022-07-03 00:42:15,897:root: Speaking
+INFO:2022-07-03 00:52:20,175:root: Listening
+INFO:2022-07-03 00:52:21,235:root: Requesting callback
+INFO:2022-07-03 00:52:25,714:root: Requesting callback
+INFO:2022-07-03 00:52:26,162:root: Executing command:hello
+INFO:2022-07-03 00:52:27,676:root: Getting response:Hello!
+INFO:2022-07-03 00:52:27,676:root: Listening
+INFO:2022-07-03 00:52:27,676:root: Speaking
+INFO:2022-07-03 00:53:47,715:root: Listening
+INFO:2022-07-03 00:53:48,929:root: Requesting callback
+INFO:2022-07-03 00:53:50,278:root: Requesting callback
+INFO:2022-07-03 00:53:50,682:root: Executing command:hello
+INFO:2022-07-03 00:53:52,174:root: Getting response:Hi Manish
+INFO:2022-07-03 00:53:52,174:root: Listening
+INFO:2022-07-03 00:53:52,174:root: Speaking
+INFO:2022-07-03 01:02:03,433:root: Listening
+INFO:2022-07-03 01:02:04,675:root: Requesting callback
+INFO:2022-07-03 01:02:08,624:root: Requesting callback
+INFO:2022-07-03 01:02:27,805:root: Listening
+INFO:2022-07-03 01:02:29,677:root: Requesting callback
+INFO:2022-07-03 01:02:30,320:root: Executing command:hai
+INFO:2022-07-03 01:02:31,783:root: Getting response:Hi Manish
+INFO:2022-07-03 01:02:31,783:root: Listening
+INFO:2022-07-03 01:02:31,783:root: Speaking
+INFO:2022-07-03 01:02:57,395:root: Listening
+INFO:2022-07-03 01:02:58,642:root: Requesting callback
+INFO:2022-07-03 01:03:00,586:root: Requesting callback
+INFO:2022-07-03 01:03:01,225:root: Executing command:hello
+INFO:2022-07-03 01:03:02,696:root: Getting response:Good to see you again!
+INFO:2022-07-03 01:03:02,696:root: Listening
+INFO:2022-07-03 01:03:02,696:root: Speaking
+INFO:2022-07-03 01:03:40,918:root: Listening
+INFO:2022-07-03 01:03:42,092:root: Requesting callback
+INFO:2022-07-03 01:03:43,622:root: Requesting callback
+INFO:2022-07-03 01:03:44,272:root: Executing command:hello
+INFO:2022-07-03 01:03:45,829:root: Getting response:Hi there, how can I help?
+INFO:2022-07-03 01:03:45,829:root: Listening
+INFO:2022-07-03 01:03:45,829:root: Speaking
+INFO:2022-07-03 01:04:22,799:root: Listening
+INFO:2022-07-03 01:04:24,048:root: Requesting callback
+INFO:2022-07-03 01:04:25,490:root: Requesting callback
+INFO:2022-07-03 01:04:33,359:root: Requesting callback
+INFO:2022-07-03 01:04:34,614:root: Requesting callback
+INFO:2022-07-03 01:04:45,831:root: Requesting callback
+INFO:2022-07-03 01:04:47,476:root: Executing command:hello
+INFO:2022-07-03 01:05:04,989:root: Listening
+INFO:2022-07-03 01:05:06,237:root: Requesting callback
+INFO:2022-07-03 01:05:08,492:root: Requesting callback
+INFO:2022-07-03 01:05:09,148:root: Executing command:hello
+INFO:2022-07-03 01:05:10,611:root: Getting response:Hello!
+INFO:2022-07-03 01:05:10,611:root: Speaking
+INFO:2022-07-03 01:05:13,677:root: Listening
+INFO:2022-07-03 01:05:14,954:root: Requesting callback
+INFO:2022-07-03 01:05:20,455:root: Requesting callback
+INFO:2022-07-03 01:05:21,473:root: Executing command:are you working correctly now
+INFO:2022-07-03 01:05:21,514:root: Getting response:Please let me calibrate your voice again
+INFO:2022-07-03 01:05:21,514:root: Speaking
+INFO:2022-07-03 01:05:24,520:root: Listening
+INFO:2022-07-03 01:05:25,929:root: Requesting callback
+INFO:2022-07-03 01:05:29,433:root: Requesting callback
+INFO:2022-07-03 01:05:30,211:root: Executing command:how are you
+INFO:2022-07-03 01:05:30,242:root: Getting response:Hi there, how can I help?
+INFO:2022-07-03 01:05:30,242:root: Speaking
+INFO:2022-07-03 01:05:33,246:root: Listening
+INFO:2022-07-03 01:10:01,032:root: Listening
+INFO:2022-07-03 01:10:02,138:root: Requesting callback
+INFO:2022-07-03 01:10:07,802:root: Requesting callback
+INFO:2022-07-03 01:10:13,116:root: Requesting callback
+INFO:2022-07-03 01:10:16,649:root: Requesting callback
+INFO:2022-07-03 01:10:19,716:root: Requesting callback
+INFO:2022-07-03 01:10:24,009:root: Requesting callback
+INFO:2022-07-03 01:10:30,630:root: Requesting callback
+INFO:2022-07-03 01:10:39,262:root: Requesting callback
+INFO:2022-07-03 01:10:40,500:root: Executing command:hindi mein
+INFO:2022-07-03 01:10:42,003:root: Getting response:Good to see you again!
+INFO:2022-07-03 01:10:42,003:root: Speaking
+INFO:2022-07-03 01:10:45,069:root: Listening
+INFO:2022-07-03 01:13:45,093:root: Listening
+INFO:2022-07-03 01:13:46,337:root: Requesting callback
+INFO:2022-07-03 01:13:52,027:root: Requesting callback
+INFO:2022-07-03 01:13:52,719:root: Executing command:hai
+INFO:2022-07-03 01:13:54,171:root: Getting response:Hi Manish
+INFO:2022-07-03 01:13:54,647:root: Speaking
+INFO:2022-07-03 01:13:57,731:root: Listening
+INFO:2022-07-03 01:14:01,740:root: Requesting callback
+INFO:2022-07-03 01:14:06,616:root: Requesting callback
+INFO:2022-07-03 01:14:07,496:root: Executing command:he has a going
+INFO:2022-07-03 01:14:07,535:root: Getting response:Talk to you later
+INFO:2022-07-03 01:14:09,724:root: Speaking
+INFO:2022-07-03 01:14:12,731:root: Listening
+INFO:2022-07-03 01:14:18,571:root: Requesting callback
+INFO:2022-07-03 01:14:19,703:root: Executing command:hi mac
+INFO:2022-07-03 01:14:19,742:root: Getting response:Hi Manish
+INFO:2022-07-03 01:14:21,422:root: Speaking
+INFO:2022-07-03 01:14:24,428:root: Listening
+INFO:2022-07-03 01:14:29,013:root: Requesting callback
+INFO:2022-07-03 01:14:32,308:root: Requesting callback
+INFO:2022-07-03 01:14:33,425:root: Executing command:whatsapp
+INFO:2022-07-03 01:14:33,463:root: Getting response:Hi there, how can I help?
+INFO:2022-07-03 01:14:34,375:root: Speaking
+INFO:2022-07-03 01:14:37,379:root: Listening
+INFO:2022-07-03 01:14:38,671:root: Requesting callback
+INFO:2022-07-03 01:14:46,006:root: Requesting callback
+INFO:2022-07-03 01:14:47,250:root: Executing command:i effect
+INFO:2022-07-03 01:14:47,296:root: Getting response:Talk to you later
+INFO:2022-07-03 01:14:48,738:root: Speaking
+INFO:2022-07-03 01:14:51,744:root: Listening
+INFO:2022-07-03 01:14:53,453:root: Requesting callback
+INFO:2022-07-03 01:14:56,815:root: Requesting callback
+INFO:2022-07-03 01:15:14,692:root: Listening
+INFO:2022-07-03 01:15:15,726:root: Requesting callback
+INFO:2022-07-03 01:15:18,862:root: Requesting callback
+INFO:2022-07-03 01:15:19,504:root: Executing command:hai
+INFO:2022-07-03 01:15:20,978:root: Getting response:Hi there, how can I help?
+INFO:2022-07-03 01:15:23,180:root: Speaking
+INFO:2022-07-03 01:15:26,261:root: Listening
+INFO:2022-07-03 01:15:29,756:root: Requesting callback
+INFO:2022-07-03 01:15:30,591:root: Executing command:how is life
+INFO:2022-07-03 01:15:30,628:root: Getting response:Hi there, how can I help?
+INFO:2022-07-03 01:15:31,772:root: Speaking
+INFO:2022-07-03 01:15:34,779:root: Listening
+INFO:2022-07-03 01:15:36,461:root: Requesting callback
+INFO:2022-07-03 01:15:39,756:root: Requesting callback
+INFO:2022-07-03 01:15:42,728:root: Requesting callback
+INFO:2022-07-03 01:15:45,189:root: Requesting callback
+INFO:2022-07-03 01:15:45,871:root: Executing command:hello
+INFO:2022-07-03 01:15:45,911:root: Getting response:Good to see you again!
+INFO:2022-07-03 01:15:46,810:root: Speaking
+INFO:2022-07-03 01:15:49,818:root: Listening
+INFO:2022-07-03 01:15:55,637:root: Requesting callback
+INFO:2022-07-03 01:15:56,676:root: Executing command:hai
+INFO:2022-07-03 01:15:56,714:root: Getting response:Hi Manish
+INFO:2022-07-03 01:16:27,396:root: Listening
+INFO:2022-07-03 01:16:28,428:root: Requesting callback
+INFO:2022-07-03 01:16:31,429:root: Requesting callback
+INFO:2022-07-03 01:16:32,209:root: Executing command:princes fox
+INFO:2022-07-03 01:16:33,697:root: Getting response:Hello!
+INFO:2022-07-03 01:16:34,135:root: Speaking
+INFO:2022-07-03 01:16:34,214:root: Listening
+INFO:2022-07-03 01:16:35,622:root: Requesting callback
+INFO:2022-07-03 01:16:38,963:root: Requesting callback
+INFO:2022-07-03 01:16:40,297:root: Executing command:lucknow ke fast again
+INFO:2022-07-03 01:16:40,336:root: Getting response:Talk to you later
+INFO:2022-07-03 01:16:41,766:root: Speaking
+INFO:2022-07-03 01:16:41,770:root: Listening
+INFO:2022-07-03 01:16:44,219:root: Requesting callback
+INFO:2022-07-03 01:16:46,009:root: Requesting callback
+INFO:2022-07-03 01:16:46,711:root: Executing command:mike
+INFO:2022-07-03 01:16:46,748:root: Getting response:Good to see you again!
+INFO:2022-07-03 01:16:47,656:root: Speaking
+INFO:2022-07-03 01:16:47,661:root: Listening
+INFO:2022-07-03 01:16:50,160:root: Requesting callback
+INFO:2022-07-03 01:16:51,154:root: Executing command:see you again
+INFO:2022-07-03 01:16:51,191:root: Getting response:Sad to see you go :(
+INFO:2022-07-03 01:16:53,078:root: Speaking
+INFO:2022-07-03 01:16:53,080:root: Listening
+INFO:2022-07-03 01:16:55,482:root: Requesting callback

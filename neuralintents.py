@@ -160,6 +160,7 @@ class GenericAssistant(IAssistant):
         return return_list
 
     def _get_response(self, ints, intents_json):
+        result = None
         try:
             tag = ints[0]['intent']
             list_of_intents = intents_json['intents']
