@@ -1,21 +1,20 @@
-from start import initialize
-from my_assistant import mac
+from my_assistant import Assistant
 
-import logging
-
-from my_assistant import mac
-from responses import mappings
-import nltk
-
-logging.basicConfig(filename="debug.log", format='%(levelname)s:%(asctime)s:%(name)s: %(message)s', level=logging.INFO)
-
-nltk.download('punkt', quiet=True)
-nltk.download('wordnet', quiet=True)
 
 if __name__ == '__main__':
+    mac = Assistant('intents.json')
+    mappings = {
+        # 'greeting'  : mac_voice_assistant.hello,
+        'set_volume': mac.set_volume,
+        'set_rate'  : mac.set_rate,
+        'set_name'  : mac.set_name,
+        # 'calibrate' : mac_voice_assistant.calibrate,
+        'speak_time': mac.speak_time,
+        'tell_joke' : mac.tell_joke,
+    }
     # Required methods ##Do not remove
     mac.set_intent_methods(mappings)
-    mac_voice_assistant.train_model()
-    mac_voice_assistant.save_model()
+    mac.train_model()
+    mac.save_model()
     mac.load_model()
     mac.begin_assisting()

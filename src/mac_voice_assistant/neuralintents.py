@@ -15,6 +15,8 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Change 3 to values (0, 1, 2, 3) acco
 
 import nltk
 from nltk.stem import WordNetLemmatizer
+nltk.download('punkt', quiet=True)
+nltk.download('wordnet', quiet=True)
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout

@@ -56,7 +56,7 @@ class Assistant(GenericAssistant):
                 print("To calibrate your voice, please speak the following after the beep: 'A quick brown fox jumped "
                       "over the lazy dog'")
                 time.sleep(2)
-                playsound('audio_sample_4.wav')
+                playsound('audio_samples/audio_sample_4.wav')
                 self.recognizer.adjust_for_ambient_noise(source, duration=1)
                 audio = self.recognizer.listen(source)
 
@@ -100,7 +100,7 @@ class Assistant(GenericAssistant):
                 se.LISTENING = True
             else:
                 pass
-            playsound("audio_sample_4.wav")
+            playsound("audio_samples/audio_sample_4.wav")
             command = self.commands.get(block=True, timeout=10)
             logging.info(f'Executing command:{command}')
             response = self.request(command)
@@ -120,7 +120,7 @@ class Assistant(GenericAssistant):
         if not se.LISTENING:
             STOP_LISTENING = self.recognizer.listen_in_background(self.microphone, self.callback)
             se.LISTENING = True
-            playsound("audio_sample_4.wav")
+            playsound("audio_samples/audio_sample_4.wav")
         return
 
     def speak(self):
