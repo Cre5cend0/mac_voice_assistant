@@ -1,0 +1,3 @@
+CALIBRATED = False
+LISTENING = False
+SPEAKING = False

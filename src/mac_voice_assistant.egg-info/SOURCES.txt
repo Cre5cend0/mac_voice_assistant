@@ -1,0 +1,17 @@
+LICENSE
+README.md
+pyproject.toml
+src/mac_voice_assistant/__init__.py
+src/mac_voice_assistant/main.py
+src/mac_voice_assistant/my_assistant.py
+src/mac_voice_assistant/my_hotkey.py
+src/mac_voice_assistant/neuralintents.py
+src/mac_voice_assistant/responses.py
+src/mac_voice_assistant/settings.py
+src/mac_voice_assistant/speech.py
+src/mac_voice_assistant/start.py
+src/mac_voice_assistant/utilities.py
+src/mac_voice_assistant.egg-info/PKG-INFO
+src/mac_voice_assistant.egg-info/SOURCES.txt
+src/mac_voice_assistant.egg-info/dependency_links.txt
+src/mac_voice_assistant.egg-info/top_level.txt

@@ -1,11 +1,11 @@
 {"intents": [
   {"tag": "greeting",
-    "patterns": ["Hi", "Hi Mac", "How are you", "Is anyone there?", "Hello", "Good day", "Whats up", "Hey", "greetings"],
-    "responses": ["Hello!", "Good to see you again!", "Hi there, how can I help?"],
+    "patterns": ["Hi", "Hey", "Hi Mac", "How are you", "Is anyone there?", "Hello", "Good day", "Whats up", "Hey", "greetings", "I am back", "imac", "mach"],
+    "responses": ["Hi Manish", "Hello!", "Good to see you again!", "Hi there, how can I help?"],
     "context_set": ""
   },
   {"tag": "goodbye",
-    "patterns": ["cya", "See you later", "Goodbye", "I am Leaving", "Have a Good day", "bye", "cao", "see ya"],
+    "patterns": ["cya", "See you later", "Goodbye", "I am Leaving", "Have a Good day", "bye", "cao", "see ya", "quit"],
     "responses": ["Sad to see you go :(", "Talk to you later", "Goodbye!"],
     "context_set": ""
   },
@@ -16,7 +16,7 @@
   },
   {"tag": "set_volume",
     "patterns": ["change my volume", "reduce volume", "set volume", "increase volume"],
-    "responses": ["what shall I set the volume to?"],
+    "responses": ["what shall I set the volume to"],
     "context_set": ""
   },
   {"tag": "set_name",
@@ -31,9 +31,24 @@
   },
   {"tag": "set_test",
     "patterns": ["this is weird", "ok, didn't see that coming", "what's happening?", "I think this might be massive",
-      "the bigger the better", "should I worry about casing?", "fuck it", "damn!", "are you crazy?",
-      "just the worst sort ever", "haha", "are you kidding me?", "ok, this is long!"],
+      "the bigger the better"],
     "responses": ["Go on..."],
+    "context_set": ""
+  },
+  {"tag": "calibrate",
+    "patterns": ["calibrate", "You're not understanding", "what are you talking about?", "fuck it", "are you crazy?",
+      "just the worst sort ever", "haha", "are you kidding me?"],
+    "responses": ["Please let me calibrate your voice again"],
+    "context_set": ""
+  },
+  {"tag": "speak_time",
+    "patterns": ["What's the time?", "Time, please?", "Tell me the time", "May I know the time, please?"],
+    "responses": [],
+    "context_set": ""
+  },
+  {"tag": "tell_joke",
+    "patterns": ["I'm bored", "Say something funny", "Make me laugh", "Tell me a joke"],
+    "responses": [],
     "context_set": ""
   }
 ]

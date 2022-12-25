@@ -5,10 +5,13 @@ from abc import ABCMeta, abstractmethod
 import random
 import json
 import pickle
+from queue import Queue
+
 import numpy as np
 import os
 
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+# If you're using TensorFlow => 2.0, make sure to put those lines before importing tensorflow to be effective.
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Change 3 to values (0, 1, 2, 3) according to the messages you want avoid.
 
 import nltk
 from nltk.stem import WordNetLemmatizer
@@ -17,9 +20,6 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
 from tensorflow.keras.optimizers import SGD
 from tensorflow.keras.models import load_model
-
-# nltk.download('punkt', quiet=True) # todo move to setup files
-# nltk.download('wordnet', quiet=True) # todo move to setup files
 
 
 class IAssistant(metaclass=ABCMeta):
@@ -51,6 +51,7 @@ class GenericAssistant(IAssistant):
         self.intents = intents
         self.intent_methods = intent_methods
         self.model_name = model_name
+        self.tasks = Queue(maxsize=10)
 
         if intents.endswith(".json"):
             self.load_json_intents(intents)
@@ -69,7 +70,7 @@ class GenericAssistant(IAssistant):
 
         for intent in self.intents['intents']:
             for pattern in intent['patterns']:
-                word = nltk.word_tokenize(pattern)
+                word = nltk.word_tokenize(pattern.lower())
                 self.words.extend(word)
                 documents.append((word, intent['tag']))
                 if intent['tag'] not in self.classes:
@@ -110,7 +111,7 @@ class GenericAssistant(IAssistant):
         sgd = SGD(learning_rate=0.01, decay=1e-6, momentum=0.9, nesterov=True)
         self.model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 
-        self.hist = self.model.fit(np.array(train_x), np.array(train_y), epochs=200, batch_size=5, verbose=1)
+        self.hist = self.model.fit(np.array(train_x), np.array(train_y), epochs=50, batch_size=5, verbose=1)
 
     def save_model(self, model_name=None):
         if model_name is None:
@@ -138,12 +139,8 @@ class GenericAssistant(IAssistant):
         return sentence_words
 
     def _bag_of_words(self, sentence, words):
-        print(sentence)
-        print(words)
         sentence_words = self._clean_up_sentence(sentence)
-        print(f'sentence: {sentence_words}')
         bag = [0] * len(words)
-        print(f'bag: {bag}')
         for s in sentence_words:
             for i, word in enumerate(words):
                 if word == s:
@@ -153,7 +150,6 @@ class GenericAssistant(IAssistant):
     def _predict_class(self, sentence):
         p = self._bag_of_words(sentence, self.words)
         res = self.model.predict(np.array([p]))[0]
-        print(f'res: {res}')
         ERROR_THRESHOLD = 0.1
         results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
 
@@ -161,10 +157,10 @@ class GenericAssistant(IAssistant):
         return_list = []
         for r in results:
             return_list.append({'intent': self.classes[r[0]], 'probability': str(r[1])})
-            print(f'return list: {return_list}')
         return return_list
 
     def _get_response(self, ints, intents_json):
+        result = None
         try:
             tag = ints[0]['intent']
             list_of_intents = intents_json['intents']
@@ -189,8 +185,9 @@ class GenericAssistant(IAssistant):
         ints = self._predict_class(message)
 
         if ints[0]['intent'] in self.intent_methods.keys():
-            print('calling method')
-            self.intent_methods[ints[0]['intent']]()
+            self.tasks.put(self.intent_methods[ints[0]['intent']])
+            self.tasks.join()
+            return
+            # self.intent_methods[ints[0]['intent']]()
         else:
-            print('getting response')
             return self._get_response(ints, self.intents)
