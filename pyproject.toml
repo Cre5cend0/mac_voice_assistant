@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mac_voice_assistant"
-version = "0.0.2"
+version = "0.0.3"
 authors = [
   { name="Manish Raj", email="manishraj1.618@gmail.com" },
 ]
@@ -13,7 +13,7 @@ readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
+    "License :: MIT License",
     "Operating System :: OS Independent",
 ]
 

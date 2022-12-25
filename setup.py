@@ -9,14 +9,14 @@ def read(file_name):
 
 setup(
     name='mac_voice_assistant',
-    version='0.0.2',
+    version='0.0.3',
     packages=find_packages(),
     url='https://pypi.org/project/mac-voice-assistant/',
     license='MIT',
     author='Manish Raj',
     author_email='manishraj1.618@gmail.com',
     description='A generic voice assistant',
-    long_description=read('README'),
+    long_description=read('README.md'),
     keywords="mac voice assistant",
     install_requires=['numpy', 'nltk', 'tensorflow'],
     classifiers=[
