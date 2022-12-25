@@ -3,11 +3,11 @@ import logging
 import sys
 import threading
 import time
-import pyjokes
+# import pyjokes
 import settings as se
 from queue import Queue
 import speech_recognition as sr
-from neuralintents import GenericAssistant
+from IA import GenericAssistant
 from playsound import playsound
 import pyttsx3 as tts
 
@@ -212,7 +212,7 @@ class Assistant(GenericAssistant):
         self.responses.join()
         return
 
-    def tell_joke(self):
-        self.responses.put(pyjokes.get_joke())
-        self.responses.join()
-        return
+    # def tell_joke(self):
+    #     self.responses.put(pyjokes.get_joke())
+    #     self.responses.join()
+    #     return

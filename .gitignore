@@ -6,3 +6,4 @@ assistant_model_classes.pkl
 assistant_model_words.pkl
 __pycache__
 *.pyc
+dependencies.txt

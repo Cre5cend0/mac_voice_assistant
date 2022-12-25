@@ -18,7 +18,7 @@ setup(
     description='A generic voice assistant',
     long_description=read('README.md'),
     keywords="mac voice assistant",
-    install_requires=['numpy', 'nltk', 'tensorflow'],
+    install_requires=['numpy', 'nltk', 'tensorflow', 'PyAudio', 'playsound', 'pyttsx3', 'SpeechRecognition'],
     classifiers=[
         "Development Status :: 1 - Planning",
         "Intended Audience :: Developers",

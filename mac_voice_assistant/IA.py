@@ -18,6 +18,7 @@ from nltk.stem import WordNetLemmatizer
 nltk.download('punkt', quiet=True)
 nltk.download('wordnet', quiet=True)
 
+
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
 from tensorflow.keras.optimizers import SGD
@@ -110,10 +111,9 @@ class GenericAssistant(IAssistant):
         self.model.add(Dropout(0.5))
         self.model.add(Dense(len(train_y[0]), activation='softmax'))
 
-        sgd = SGD(learning_rate=0.01, decay=1e-6, momentum=0.9, nesterov=True)
+        sgd = SGD(learning_rate=0.01, weight_decay=1e-6, momentum=0.9, nesterov=True)
         self.model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
-
-        self.hist = self.model.fit(np.array(train_x), np.array(train_y), epochs=50, batch_size=5, verbose=1)
+        self.hist = self.model.fit(np.array(train_x), np.array(train_y), epochs=50, batch_size=5, verbose=0)
 
     def save_model(self, model_name=None):
         if model_name is None:

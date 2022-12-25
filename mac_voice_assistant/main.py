@@ -10,7 +10,7 @@ if __name__ == '__main__':
         'set_name'  : mac.set_name,
         # 'calibrate' : mac_voice_assistant.calibrate,
         'speak_time': mac.speak_time,
-        'tell_joke' : mac.tell_joke,
+        # 'tell_joke' : mac.tell_joke,
     }
     # Required methods ##Do not remove
     mac.set_intent_methods(mappings)
