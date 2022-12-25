@@ -1,10 +1,14 @@
 Metadata-Version: 2.1
 Name: mac-voice-assistant
-Version: 0.0.1
+Version: 0.0.2
 Summary: A voice assistant prototype
+Home-page: https://pypi.org/project/mac-voice-assistant/
+Author: Manish Raj
 Author-email: Manish Raj <manishraj1.618@gmail.com>
+License: MIT
 Project-URL: Homepage, https://github.com/Cre5cend0/mac
 Project-URL: Bug Tracker, https://github.com/Cre5cend0/mac/issues
+Keywords: mac voice assistant
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
