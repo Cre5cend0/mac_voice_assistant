@@ -2444,3 +2444,80 @@ INFO:2022-07-03 01:16:51,191:root: Getting response:Sad to see you go :(
 INFO:2022-07-03 01:16:53,078:root: Speaking
 INFO:2022-07-03 01:16:53,080:root: Listening
 INFO:2022-07-03 01:16:55,482:root: Requesting callback
+INFO:2022-12-17 23:27:04,270:root: Listening
+INFO:2022-12-17 23:27:05,518:root: Requesting callback
+INFO:2022-12-17 23:27:09,513:root: Requesting callback
+INFO:2022-12-17 23:27:12,741:root: Requesting callback
+INFO:2022-12-17 23:27:22,563:root: Requesting callback
+INFO:2022-12-17 23:27:24,239:root: Executing command:hello
+INFO:2022-12-17 23:27:25,932:root: Getting response:Good to see you again!
+INFO:2022-12-17 23:27:32,491:root: Speaking
+INFO:2022-12-17 23:27:35,665:root: Listening
+INFO:2022-12-17 23:27:40,306:root: Requesting callback
+INFO:2022-12-17 23:27:41,219:root: Executing command:why are you so slow
+INFO:2022-12-17 23:27:41,257:root: Getting response:Please let me calibrate your voice again
+INFO:2022-12-17 23:27:47,059:root: Speaking
+INFO:2022-12-17 23:27:50,066:root: Listening
+INFO:2022-12-17 23:27:51,613:root: Requesting callback
+INFO:2022-12-17 23:27:54,493:root: Requesting callback
+INFO:2022-12-17 23:27:55,076:root: Executing command:how is it going
+INFO:2022-12-17 23:27:55,116:root: Getting response:Hello!
+INFO:2022-12-17 23:28:19,312:root: Speaking
+INFO:2022-12-17 23:28:22,386:root: Listening
+INFO:2022-12-17 23:59:11,687:root: Listening
+INFO:2022-12-17 23:59:12,935:root: Requesting callback
+INFO:2022-12-17 23:59:15,026:root: Requesting callback
+INFO:2022-12-17 23:59:15,304:root: Executing command:hai
+INFO:2022-12-17 23:59:17,479:root: Getting response:Hi Manish
+INFO:2022-12-17 23:59:18,363:root: Speaking
+INFO:2022-12-18 00:00:34,776:root: Listening
+INFO:2022-12-18 00:00:36,024:root: Requesting callback
+INFO:2022-12-18 00:00:39,278:root: Requesting callback
+INFO:2022-12-18 00:00:42,454:root: Requesting callback
+INFO:2022-12-18 00:00:42,953:root: Executing command:hello
+INFO:2022-12-18 00:00:45,153:root: Getting response:Hi there, how can I help?
+INFO:2022-12-18 00:00:49,929:root: Speaking
+INFO:2022-12-18 00:00:53,118:root: Listening
+INFO:2022-12-18 00:00:54,330:root: Requesting callback
+INFO:2022-12-18 00:00:58,279:root: Requesting callback
+INFO:2022-12-18 00:00:58,974:root: Executing command:how is everything going on
+INFO:2022-12-18 00:00:59,018:root: Getting response:Hi there, how can I help?
+INFO:2022-12-18 00:01:07,209:root: Speaking
+INFO:2022-12-18 00:01:10,216:root: Listening
+INFO:2022-12-18 00:01:11,485:root: Requesting callback
+INFO:2022-12-18 00:01:17,618:root: Requesting callback
+INFO:2022-12-18 00:01:18,909:root: Executing command:ok sometimes you understand sometimes you don't
+INFO:2022-12-18 00:01:18,967:root: Getting response:Please let me calibrate your voice again
+INFO:2022-12-18 00:01:23,626:root: Speaking
+INFO:2022-12-18 00:01:26,702:root: Listening
+INFO:2022-12-18 00:01:33,468:root: Requesting callback
+INFO:2022-12-18 00:01:34,379:root: Executing command:ok what you want to say
+INFO:2022-12-18 00:01:34,422:root: Getting response:Please let me calibrate your voice again
+INFO:2022-12-18 00:01:39,846:root: Speaking
+INFO:2022-12-18 00:01:42,855:root: Listening
+INFO:2022-12-18 00:01:53,425:root: Requesting callback
+INFO:2022-12-18 00:04:23,038:root: Listening
+INFO:2022-12-18 00:04:24,261:root: Requesting callback
+INFO:2022-12-18 00:04:26,395:root: Requesting callback
+INFO:2022-12-18 00:04:28,049:root: Requesting callback
+INFO:2022-12-18 00:04:28,549:root: Executing command:what's the time
+INFO:2022-12-18 00:04:30,414:root: Requesting callback
+INFO:2022-12-18 00:04:31,099:root: Speaking
+INFO:2022-12-18 00:04:34,289:root: Getting response:None
+INFO:2022-12-18 00:04:34,289:root: Listening
+INFO:2022-12-18 00:04:41,841:root: Requesting callback
+INFO:2022-12-18 00:04:42,801:root: Executing command:ok
+INFO:2022-12-18 00:04:42,844:root: Getting response:Sad to see you go :(
+INFO:2022-12-18 00:04:44,220:root: Speaking
+INFO:2022-12-18 00:04:47,227:root: Listening
+INFO:2022-12-18 00:04:53,819:root: Requesting callback
+INFO:2022-12-18 00:04:54,678:root: Executing command:tell me a joke
+INFO:2022-12-18 00:04:55,925:root: Speaking
+INFO:2022-12-18 00:04:59,000:root: Getting response:None
+INFO:2022-12-18 00:04:59,000:root: Listening
+INFO:2022-12-18 00:05:01,279:root: Requesting callback
+INFO:2022-12-18 00:05:07,247:root: Requesting callback
+INFO:2022-12-18 00:05:07,993:root: Executing command:tell me a joke
+INFO:2022-12-18 00:05:13,812:root: Speaking
+INFO:2022-12-18 00:05:16,819:root: Getting response:None
+INFO:2022-12-18 00:05:16,820:root: Listening

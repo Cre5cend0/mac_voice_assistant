@@ -5,13 +5,11 @@ import threading
 import time
 import pyjokes
 import settings as se
-from queue import Queue, LifoQueue
+from queue import Queue
 import speech_recognition as sr
 from neuralintents import GenericAssistant
 from playsound import playsound
 import pyttsx3 as tts
-
-from text_typing import typingPrint
 
 global STOP_LISTENING
 global SPEAK_THREAD
@@ -50,6 +48,8 @@ class Assistant(GenericAssistant):
     def calibrate(self):
         se.CALIBRATED = False
         while not se.CALIBRATED:
+            if se.LISTENING:
+                STOP_LISTENING(wait_for_stop=True)
             with self.microphone as source:
                 print("We need to calibrate your voice at least once before we start the program.")
                 time.sleep(2)
@@ -101,7 +101,7 @@ class Assistant(GenericAssistant):
             else:
                 pass
             playsound("audio_sample_4.wav")
-            command = self.commands.get(block=True, timeout=30)
+            command = self.commands.get(block=True, timeout=10)
             logging.info(f'Executing command:{command}')
             response = self.request(command)
             logging.info(f'Getting response:{response}')
@@ -129,12 +129,14 @@ class Assistant(GenericAssistant):
             text = self.responses.get(block=True, timeout=None)
             STOP_LISTENING(wait_for_stop=True)
             se.LISTENING = False
+            se.SPEAKING = True
             logging.info('Speaking')
             self.engine.say(text)
             if self.engine._inLoop:
                 self.engine.endLoop()
             self.engine.runAndWait()
             time.sleep(3)
+            se.SPEAKING = False
             self.responses.task_done()
 
     def execute_task(self):
@@ -221,4 +223,4 @@ class Assistant(GenericAssistant):
 
 
 # main assistant object
-mac = Assistant('intents.json')
+mac = Assistant('/Users/manishraj/Documents/pycharm_projects/mac_voice_assistant/intents.json')

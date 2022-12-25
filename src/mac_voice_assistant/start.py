@@ -13,7 +13,7 @@ logging.basicConfig(filename="debug.log", format='%(levelname)s:%(asctime)s:%(na
 def initialize():
     # Required methods ##Do not remove
     mac.set_intent_methods(mappings)
-    # mac.train_model()
-    # mac.save_model()
+    # mac_voice_assistant.train_model()
+    # mac_voice_assistant.save_model()
     mac.load_model()
-    # mac.calibrate()
+    # mac_voice_assistant.calibrate()
