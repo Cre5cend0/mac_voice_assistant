@@ -1,6 +1,6 @@
 import os
 
-from setuptools import setup
+from setuptools import find_packages, setup
 
 
 def read(file_name):
@@ -10,7 +10,7 @@ def read(file_name):
 setup(
     name='mac_voice_assistant',
     version='0.0.1',
-    packages=['mac_voice_assistant', 'tests'],
+    packages=find_packages(),
     url='https://pypi.org/project/mac-voice-assistant/',
     license='MIT',
     author='Manish Raj',
@@ -18,8 +18,11 @@ setup(
     description='A generic voice assistant',
     long_description=read('README'),
     keywords="mac voice assistant",
+    install_requires=['numpy', 'nltk', 'tensorflow'],
     classifiers=[
-        "Development Status :: 2 - Pre-Alpha",
+        "Development Status :: 1 - Planning",
+        "Intended Audience :: Developers",
+        "Programming Language :: Python :: 3",
         "Topic :: Utilities",
         "License :: OSI Approved :: MIT License",
     ],

@@ -197,10 +197,6 @@ class Assistant(GenericAssistant):
 
     #  +++++++++++++++++++ Standard methods  +++++++++++++++++++++++ #
 
-    # def clear_screen(self):
-    #     clear = lambda: os.system('cls')
-    #     os.system("clear")
-
     def speak_time(self):
         """
         This method will take time and slice it "2020-06-05 17:50:14.582630" from 11 to 12 for hour
@@ -220,7 +216,3 @@ class Assistant(GenericAssistant):
         self.responses.put(pyjokes.get_joke())
         self.responses.join()
         return
-
-
-# main assistant object
-mac = Assistant('/Users/manishraj/Documents/pycharm_projects/mac_voice_assistant/intents.json')
