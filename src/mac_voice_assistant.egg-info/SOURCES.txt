@@ -7,6 +7,13 @@ mac_voice_assistant.egg-info/SOURCES.txt
 mac_voice_assistant.egg-info/dependency_links.txt
 mac_voice_assistant.egg-info/requires.txt
 mac_voice_assistant.egg-info/top_level.txt
+src/__init__.py
+src/mac_voice_assistant/__init__.py
+src/mac_voice_assistant/main.py
+src/mac_voice_assistant/my_assistant.py
+src/mac_voice_assistant/neuralintents.py
+src/mac_voice_assistant/settings.py
+src/mac_voice_assistant/utilities.py
 tests/__init__.py
 tests/example.py
 tests/my_hotkey.py
