@@ -10,7 +10,7 @@ Project-URL: Homepage, https://github.com/Cre5cend0/mac
 Project-URL: Bug Tracker, https://github.com/Cre5cend0/mac/issues
 Keywords: mac voice assistant
 Classifier: Programming Language :: Python :: 3
-Classifier: License :: MIT License
+Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
 Requires-Python: >=3.7
 Description-Content-Type: text/markdown
