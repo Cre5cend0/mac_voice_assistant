@@ -9,7 +9,7 @@ def read(file_name):
 
 setup(
     name='mac_voice_assistant',
-    version='0.1.3',
+    version='0.2.2',
     packages=find_packages(),
     py_modules=['IA'],
     url='https://pypi.org/project/mac-voice-assistant/',
