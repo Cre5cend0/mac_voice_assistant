@@ -1,14 +1,15 @@
 import datetime
+import os
 import sys
 import time
 import pyjokes
-
-from queue import Queue
+import playsound
+import pyttsx3 as tts
 import speech_recognition as sr
 
+from queue import Queue
 from .IA.IA import GenericAssistant
 from playsound import playsound
-import pyttsx3 as tts
 from multiprocessing.pool import ThreadPool
 
 
@@ -54,7 +55,7 @@ class Assistant(GenericAssistant):
                 print("To calibrate your voice, please speak the following after the beep: 'A quick brown fox jumped "
                       "over the lazy dog'")
                 time.sleep(2)
-                playsound('audio_samples/audio_sample_4.wav')
+                playsound('audio_samples/beep.wav')
                 self.recognizer.adjust_for_ambient_noise(source, duration=1)
                 audio = self.recognizer.listen(source)
 
@@ -73,7 +74,7 @@ class Assistant(GenericAssistant):
                 print(f"Could not request results from Speech Recognition service; {e}")
 
     def listen(self):
-        playsound("audio_samples/audio_sample_4.wav")
+        playsound("audio_samples/beep.wav")
         with self.microphone as source:
             try:
                 while True:
@@ -140,7 +141,7 @@ class Assistant(GenericAssistant):
         self.tasks.task_done()
 
     def assist(self):
-        # self.calibrate()
+        self.calibrate()
         self.listen()
 
     def set_name(self):

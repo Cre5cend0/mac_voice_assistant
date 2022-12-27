@@ -2,7 +2,7 @@ from mac_voice_assistant.AI import Assistant
 
 
 if __name__ == '__main__':
-    mac = Assistant('intents.json', model_name='mac')
+    mac = Assistant('default_intents.json', model_name='mac')
     mappings = {
         # 'greeting'  : mac_voice_assistant.hello,
         'set_volume': mac.set_volume,

@@ -9,15 +9,13 @@ def read(file_name):
 
 setup(
     name='mac_voice_assistant',
-    version='0.2.3',
+    version='0.2.7',
     packages=find_packages(),
-    py_modules=['IA'],
+    package_data={'mac_voice_assistant': ['audio_samples/beep.wav', 'default_intents.json']},
     url='https://pypi.org/project/mac-voice-assistant/',
-    license='MIT',
     author='Manish Raj',
     author_email='manishraj1.618@gmail.com',
     description='A generic voice assistant',
     long_description=read('README.md'),
     keywords="mac voice assistant",
-    install_requires=['numpy', 'nltk', 'tensorflow', 'PyAudio', 'playsound', 'pyttsx3', 'SpeechRecognition', 'pyjokes'],
 )
