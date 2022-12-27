@@ -1,4 +1,4 @@
-from my_assistant import Assistant
+from mac_voice_assistant.AI import Assistant
 
 
 if __name__ == '__main__':

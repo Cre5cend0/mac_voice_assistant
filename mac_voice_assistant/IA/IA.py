@@ -1,4 +1,4 @@
-"""Imported file from NeuralNine github account, nueralintents, and fixed numpy and tensorflow: lr deprecation error"""
+"""Intelligent Assistant"""
 
 from abc import ABCMeta, abstractmethod
 
@@ -15,8 +15,8 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Change 3 to values (0, 1, 2, 3) acco
 
 import nltk
 from nltk.stem import WordNetLemmatizer
-nltk.download('punkt', quiet=True)
-nltk.download('wordnet', quiet=True)
+# nltk.download('punkt', quiet=True)
+# nltk.download('wordnet', quiet=True)
 
 
 from tensorflow.keras.models import Sequential

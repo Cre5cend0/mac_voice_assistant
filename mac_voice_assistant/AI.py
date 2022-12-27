@@ -9,7 +9,7 @@ from queue import Queue
 import speech_recognition as sr
 
 import credentials
-from IA.IA import GenericAssistant
+from .IA.IA import GenericAssistant
 from playsound import playsound
 import pyttsx3 as tts
 from multiprocessing.pool import ThreadPool
