@@ -76,16 +76,16 @@ class Assistant(GenericAssistant):
                 print(f"Could not request results from Speech Recognition service; {e}")
 
     def listen(self):
+        playsound("audio_samples/audio_sample_4.wav")
         with self.microphone as source:
             try:
                 while True:
                     self.LISTENING = True
                     # repeatedly listen for phrases and put the resulting audio on the audio processing job queue
-                    playsound("audio_samples/audio_sample_4.wav")
                     audio = self.recognizer.listen(source)
                     self.audio_queue.put(audio)
-                    result = self.thread_pool.apply_async(self.callback)
-                    result.wait()
+                    self.thread_pool.apply(self.callback)
+                    # result.wait()
             except KeyboardInterrupt:  # allow Cmd + C to shut down the program
                 pass
 
@@ -98,7 +98,6 @@ class Assistant(GenericAssistant):
             # to use another API key, use `recogniser.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
             # segment = audio.get_segment(start_ms=0, end_ms=4000)
             text = self.recognizer.recognize_google(audio)
-            print(text)
             # if self.name in text:
             # text = self.recognizer.recognize_google(audio)
             if len(text) > 0:
@@ -123,6 +122,7 @@ class Assistant(GenericAssistant):
         elif response == 'quit':
             self.responses.put('Goodbye!')
             self.thread_pool.apply(self.speak)
+            self.thread_pool.terminate()
             sys.exit(0)
         else:
             self.responses.put(response)
@@ -197,7 +197,7 @@ class Assistant(GenericAssistant):
         hour = time_now[11:13]
         mins = time_now[14:16]
         self.responses.put(f"The time is {hour} Hours and {mins} Minutes")
-        self.thread_pool.apply(self.speak)
+        self.thread_pool.apply_async(self.speak)
         return
 
     def tell_joke(self):
