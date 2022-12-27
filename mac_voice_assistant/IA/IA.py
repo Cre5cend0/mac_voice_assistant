@@ -188,7 +188,6 @@ class GenericAssistant(IAssistant):
 
         if ints[0]['intent'] in self.intent_methods.keys():
             self.tasks.put(self.intent_methods[ints[0]['intent']])
-            self.tasks.join()
             return
             # self.intent_methods[ints[0]['intent']]()
         else:
