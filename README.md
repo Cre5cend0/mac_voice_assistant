@@ -1,5 +1,5 @@
 ### 1. Brew
-- Run the following in your project terminal if you do not have bew installed already
+- Run the following in your project terminal if you do not have brew installed already
 `$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 
 ### 2. Portaudio
@@ -11,8 +11,10 @@
 `$ pip install --global-option='build_ext' --global-option='-I/usr/local/include' --global-option='-L/usr/local/lib' pyaudio` 
 >Refer to [this link](https://gist.github.com/jiaaro/9767512210a1d80a8a0d#gistcomment-3023216) if this is not working
 
-###4. NeuralIntents
-`$ pip install neuralintents` (Run this only if neuralintents.py file is missing)
+### 4. Command Line Developer Tools - XCode (Mac Users)
+Please ensure Xcode packages are up-to-date. Try running
+- `$ sudo xcodebuild -license`
+- `$ xcodebuild -runFirstLaunch`
 
 ## Start
 While being in the venv `$ python main.py`

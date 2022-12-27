@@ -9,8 +9,9 @@ def read(file_name):
 
 setup(
     name='mac_voice_assistant',
-    version='0.1.0',
+    version='0.1.3',
     packages=find_packages(),
+    py_modules=['IA'],
     url='https://pypi.org/project/mac-voice-assistant/',
     license='MIT',
     author='Manish Raj',
@@ -18,12 +19,5 @@ setup(
     description='A generic voice assistant',
     long_description=read('README.md'),
     keywords="mac voice assistant",
-    install_requires=['numpy', 'nltk', 'tensorflow'],
-    classifiers=[
-        "Development Status :: 1 - Planning",
-        "Intended Audience :: Developers",
-        "Programming Language :: Python :: 3",
-        "Topic :: Utilities",
-        "License :: OSI Approved :: MIT License",
-    ],
+    install_requires=['numpy', 'nltk', 'tensorflow', 'PyAudio', 'playsound', 'pyttsx3', 'SpeechRecognition', 'pyjokes'],
 )

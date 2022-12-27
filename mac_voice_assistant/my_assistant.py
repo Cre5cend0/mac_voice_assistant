@@ -4,24 +4,23 @@ import sys
 import threading
 import time
 import pyjokes
-import settings as se
+
 from queue import Queue
 import speech_recognition as sr
-from neuralintents import GenericAssistant
+
+import credentials
+from IA.IA import GenericAssistant
 from playsound import playsound
 import pyttsx3 as tts
-
-global STOP_LISTENING
-global SPEAK_THREAD
-global SPEAK_EVENT
-global WORKER_THREAD
+from multiprocessing.pool import ThreadPool
 
 
 class Assistant(GenericAssistant):
-
     def __init__(self, intents, intent_methods={}, model_name="assistant_model"):
         super().__init__(intents, intent_methods, model_name)
-        self.name = 'Mac'
+        self.name = model_name
+
+        self.audio_queue = Queue(maxsize=20)
         self.commands = Queue(maxsize=20)
         self.responses = Queue(maxsize=20)
 
@@ -39,17 +38,19 @@ class Assistant(GenericAssistant):
         self.engine.setProperty('rate', self.default_speak_rate)
         self.speech_voices = self.engine.getProperty('voices')
         self.engine.setProperty('voice', self.speech_voices[self.default_voice].id)
-        self._lock = threading.Lock()
+
+        self.CALIBRATED = False
+        self.LISTENING = False
+        self.SPEAKING = False
+
+        self.thread_pool = ThreadPool(processes=5)
 
     #  +++++++++++++++++++ Core methods  +++++++++++++++++++++++ #
     def set_intent_methods(self, intent_methods):
         self.intent_methods = intent_methods
 
     def calibrate(self):
-        se.CALIBRATED = False
-        while not se.CALIBRATED:
-            if se.LISTENING:
-                STOP_LISTENING(wait_for_stop=True)
+        while not self.CALIBRATED:
             with self.microphone as source:
                 print("We need to calibrate your voice at least once before we start the program.")
                 time.sleep(2)
@@ -64,7 +65,7 @@ class Assistant(GenericAssistant):
             try:
                 text = self.recognizer.recognize_google(audio)
                 if text:
-                    se.CALIBRATED = True
+                    self.CALIBRATED = True
                     print(f'You said: {text}')
                     print('Voice calibrated')
                     break
@@ -72,90 +73,77 @@ class Assistant(GenericAssistant):
                 print("Unable to comprehend. Try again.")
                 continue
             except sr.RequestError as e:
-                print("Could not request results from Speech Recognition service; {0}".format(e))
+                print(f"Could not request results from Speech Recognition service; {e}")
 
-    def callback(self, recognizer, audio):  # this is called from the background thread
-        try:  # recognize speech using Google Speech Recognition
-            logging.info('Requesting callback')
-            CALLBACK_THREAD = threading.currentThread()
-            CALLBACK_THREAD.setName('Callback')
-            print('Requesting callback')
+    def listen(self):
+        with self.microphone as source:
+            try:
+                while True:
+                    self.LISTENING = True
+                    # repeatedly listen for phrases and put the resulting audio on the audio processing job queue
+                    playsound("audio_samples/audio_sample_4.wav")
+                    audio = self.recognizer.listen(source)
+                    self.audio_queue.put(audio)
+                    result = self.thread_pool.apply_async(self.callback)
+                    result.wait()
+            except KeyboardInterrupt:  # allow Cmd + C to shut down the program
+                pass
+
+    def callback(self):
+        # this runs in a background thread
+        audio = self.audio_queue.get(block=True, timeout=None)  # retrieve the next audio processing job from the main thread
+
+        # received audio data, now we'll recognize it using Google Speech Recognition
+        try:
             # to use another API key, use `recogniser.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
-            text = recognizer.recognize_google(audio)
-            text = text.lower()
+            # segment = audio.get_segment(start_ms=0, end_ms=4000)
+            text = self.recognizer.recognize_google(audio)
             print(text)
+            # if self.name in text:
+            # text = self.recognizer.recognize_google(audio)
             if len(text) > 0:
+                text = text.lower()
                 self.commands.put(text)
+                result = self.thread_pool.apply_async(self.process_command)
+                result.wait()
         except sr.UnknownValueError:
             pass
         except sr.RequestError as e:
-            print("Could not request results from Speech Recognition service; {0}".format(e))
+            print(f"Could not request results from Google Speech Recognition service; {e}")
+        finally:
+            self.audio_queue.task_done()  # mark the audio processing job as completed in the queue
 
-    def listen(self):
-        global STOP_LISTENING
-        while True:
-            logging.info('Listening')
-            if not se.LISTENING:
-                STOP_LISTENING = self.recognizer.listen_in_background(self.microphone, self.callback)
-                se.LISTENING = True
-            else:
-                pass
-            playsound("audio_samples/audio_sample_4.wav")
-            command = self.commands.get(block=True, timeout=10)
-            logging.info(f'Executing command:{command}')
-            response = self.request(command)
-            logging.info(f'Getting response:{response}')
-            if response is None or response == '':
-                pass
-            elif response == 'quit':
-                self.responses.put('Goodbye!')
-                self.responses.join()
-                sys.exit(0)
-            else:
-                self.responses.put(response)
-                self.responses.join()
-
-    def listen_if_not_listening(self):
-        global STOP_LISTENING
-        if not se.LISTENING:
-            STOP_LISTENING = self.recognizer.listen_in_background(self.microphone, self.callback)
-            se.LISTENING = True
-            playsound("audio_samples/audio_sample_4.wav")
-        return
+    def process_command(self):
+        command = self.commands.get(block=True, timeout=None)
+        print(f'Executing command:{command}')
+        response = self.request(command)
+        print(f'Getting response:{response}')
+        if response is None or response == '':
+            self.thread_pool.apply_async(self.execute_task)
+        elif response == 'quit':
+            self.responses.put('Goodbye!')
+            self.thread_pool.apply(self.speak)
+            sys.exit(0)
+        else:
+            self.responses.put(response)
+            self.thread_pool.apply(self.speak)
+        self.commands.task_done()
 
     def speak(self):
-        global STOP_LISTENING
-        while True:
-            text = self.responses.get(block=True, timeout=None)
-            STOP_LISTENING(wait_for_stop=True)
-            se.LISTENING = False
-            se.SPEAKING = True
-            logging.info('Speaking')
-            self.engine.say(text)
-            if self.engine._inLoop:
-                self.engine.endLoop()
-            self.engine.runAndWait()
-            time.sleep(3)
-            se.SPEAKING = False
-            self.responses.task_done()
+        text = self.responses.get(block=True, timeout=None)
+        self.engine.say(text)
+        if self.engine._inLoop:
+            self.engine.endLoop()
+        self.engine.runAndWait()
+        self.responses.task_done()
 
     def execute_task(self):
-        while True:
-            task = self.tasks.get(block=True, timeout=None)
-            task()
-            self.tasks.task_done()
+        task = self.tasks.get(block=True, timeout=None)
+        task()
+        self.tasks.task_done()
 
-    def begin_assisting(self):
-        self.calibrate()
-        global STOP_LISTENING
-        global SPEAK_THREAD
-        global WORKER_THREAD
-        SPEAK_THREAD = threading.Thread(target=self.speak, daemon=True)
-        WORKER_THREAD = threading.Thread(target=self.execute_task, daemon=True)
-        SPEAK_THREAD.setName('Speaker')
-        WORKER_THREAD.setName('Worker')
-        SPEAK_THREAD.start()
-        WORKER_THREAD.start()
+    def assist(self):
+        # self.calibrate()
         self.listen()
 
     def set_name(self):
@@ -209,10 +197,12 @@ class Assistant(GenericAssistant):
         hour = time_now[11:13]
         mins = time_now[14:16]
         self.responses.put(f"The time is {hour} Hours and {mins} Minutes")
-        self.responses.join()
+        self.thread_pool.apply(self.speak)
         return
 
     def tell_joke(self):
         self.responses.put(pyjokes.get_joke())
-        self.responses.join()
         return
+
+    def recalibrate(self):
+        pass
