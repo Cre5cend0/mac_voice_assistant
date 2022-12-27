@@ -1,14 +1,11 @@
 import datetime
-import logging
 import sys
-import threading
 import time
 import pyjokes
 
 from queue import Queue
 import speech_recognition as sr
 
-import credentials
 from .IA.IA import GenericAssistant
 from playsound import playsound
 import pyttsx3 as tts
