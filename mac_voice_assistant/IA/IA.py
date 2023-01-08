@@ -18,7 +18,6 @@ from nltk.stem import WordNetLemmatizer
 # nltk.download('punkt', quiet=True)
 # nltk.download('wordnet', quiet=True)
 
-
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
 from tensorflow.keras.optimizers import SGD
@@ -188,7 +187,7 @@ class GenericAssistant(IAssistant):
 
         if ints[0]['intent'] in self.intent_methods.keys():
             self.tasks.put(self.intent_methods[ints[0]['intent']])
-            return
-            # self.intent_methods[ints[0]['intent']]()
+            print(f"method called: {self.intent_methods[ints[0]['intent']]}")
+            return True, self._get_response(ints, self.intents)
         else:
-            return self._get_response(ints, self.intents)
+            return False, self._get_response(ints, self.intents)

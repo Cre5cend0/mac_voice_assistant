@@ -1,9 +1,8 @@
 .DS_Store
 .idea/**
 debug.log
-mac.h5
-mac_classes.pkl
-mac_words.pkl
+*.h5
+*.pkl
 __pycache__
 *.pyc
 dependencies.txt

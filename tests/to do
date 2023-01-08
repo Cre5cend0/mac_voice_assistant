@@ -3,7 +3,10 @@ play animation while listening
 play sound before starting to listen (optional, for disabled people)
 keyboard shortcut to start mac listening
 have a setup profile function where calibration is saved to profile and when not accurate, ask to calibrate again. Read a passage to calibrate in different noise levels
-speed up listening process once mac is done speaking. aka find a vway to remove runAndWait()
+speed up listening process once mac is done speaking. aka find a way to remove runAndWait()
 listen in background
 use typing print for all print messages, or at least the calibrate function
+
+# nltk download issue
+# move pkl files some place else
 
