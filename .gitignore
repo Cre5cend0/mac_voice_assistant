@@ -1,8 +1,13 @@
 .DS_Store
 .idea/**
 debug.log
-assistant_model.h5
-assistant_model_classes.pkl
-assistant_model_words.pkl
+*.h5
+*.pkl
 __pycache__
 *.pyc
+dependencies.txt
+dist
+build
+mac_voice_assistant.egg-info
+credentials.py
+threadpool.py

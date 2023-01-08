@@ -1,4 +1,4 @@
-"""Imported file from NeuralNine github account, nueralintents, and fixed numpy and tensorflow: lr deprecation error"""
+"""Intelligent Assistant"""
 
 from abc import ABCMeta, abstractmethod
 
@@ -15,8 +15,8 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Change 3 to values (0, 1, 2, 3) acco
 
 import nltk
 from nltk.stem import WordNetLemmatizer
-nltk.download('punkt', quiet=True)
-nltk.download('wordnet', quiet=True)
+# nltk.download('punkt', quiet=True)
+# nltk.download('wordnet', quiet=True)
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
@@ -110,10 +110,9 @@ class GenericAssistant(IAssistant):
         self.model.add(Dropout(0.5))
         self.model.add(Dense(len(train_y[0]), activation='softmax'))
 
-        sgd = SGD(learning_rate=0.01, decay=1e-6, momentum=0.9, nesterov=True)
+        sgd = SGD(learning_rate=0.01, weight_decay=1e-6, momentum=0.9, nesterov=True)
         self.model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
-
-        self.hist = self.model.fit(np.array(train_x), np.array(train_y), epochs=50, batch_size=5, verbose=1)
+        self.hist = self.model.fit(np.array(train_x), np.array(train_y), epochs=50, batch_size=5, verbose=0)
 
     def save_model(self, model_name=None):
         if model_name is None:
@@ -188,8 +187,7 @@ class GenericAssistant(IAssistant):
 
         if ints[0]['intent'] in self.intent_methods.keys():
             self.tasks.put(self.intent_methods[ints[0]['intent']])
-            self.tasks.join()
-            return
-            # self.intent_methods[ints[0]['intent']]()
+            print(f"method called: {self.intent_methods[ints[0]['intent']]}")
+            return True, self._get_response(ints, self.intents)
         else:
-            return self._get_response(ints, self.intents)
+            return False, self._get_response(ints, self.intents)
