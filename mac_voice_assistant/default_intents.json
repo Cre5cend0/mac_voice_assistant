@@ -21,12 +21,12 @@
   },
   {"tag": "set_volume",
     "patterns": ["change my volume", "reduce volume", "set volume", "increase volume"],
-    "responses": ["what shall I set the volume to"],
+    "responses": [],
     "context_set": ""
   },
   {"tag": "set_name",
     "patterns": ["rename", "change your name", "You're called", "You are called", "set name"],
-    "responses": ["Alright", "I've changed my name"],
+    "responses": [],
     "context_set": ""
   },
     {"tag": "set_rate",

@@ -1,28 +1,27 @@
 """Intelligent Assistant"""
-
-from abc import ABCMeta, abstractmethod
-
 import random
 import json
 import pickle
-from queue import Queue
-
 import numpy as np
 import os
 
-# If you're using TensorFlow => 2.0, make sure to put those lines before importing tensorflow to be effective.
+# If you're using TensorFlow => 2.0, make sure to put these lines before importing tensorflow to be effective.
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Change 3 to values (0, 1, 2, 3) according to the messages you want avoid.
 
 import nltk
+from abc import ABCMeta, abstractmethod
+from queue import Queue
+from multiprocessing.pool import ThreadPool
+from ..utils.logger import log
 from nltk.stem import WordNetLemmatizer
-# nltk.download('punkt', quiet=True)
-# nltk.download('wordnet', quiet=True)
-
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
 from tensorflow.keras.optimizers import SGD
 from tensorflow.keras.models import load_model
 
+
+# nltk.download('punkt', quiet=True)
+# nltk.download('wordnet', quiet=True)
 
 class IAssistant(metaclass=ABCMeta):
 
@@ -53,7 +52,15 @@ class GenericAssistant(IAssistant):
         self.intents = intents
         self.intent_methods = intent_methods
         self.model_name = model_name
-        self.tasks = Queue(maxsize=10)
+        self.log = log
+        # Initialize queue instances
+        self.tasks = Queue(maxsize=20)
+        self.audio_queue = Queue(maxsize=20)
+        self.commands = Queue(maxsize=20)
+        self.responses = Queue(maxsize=20)
+
+        # Initialize thread pool instance
+        self.thread_pool = ThreadPool(processes=10)
 
         if intents.endswith(".json"):
             self.load_json_intents(intents)
@@ -170,7 +177,7 @@ class GenericAssistant(IAssistant):
                     result = random.choice(i['responses'])
                     break
         except IndexError:
-            result = "I don't understand!"
+            pass
         return result
 
     def request_tag(self, message):
@@ -179,15 +186,14 @@ class GenericAssistant(IAssistant):
     def get_tag_by_id(self, id):
         pass
 
-    def request_method(self, message):
+    def request_method(self, intent):
         pass
 
     def request(self, message):
         ints = self._predict_class(message)
-
-        if ints[0]['intent'] in self.intent_methods.keys():
-            self.tasks.put(self.intent_methods[ints[0]['intent']])
-            print(f"method called: {self.intent_methods[ints[0]['intent']]}")
-            return True, self._get_response(ints, self.intents)
+        intent = ints[0]['intent']
+        if intent in self.intent_methods.keys():
+            method = self.intent_methods[intent]
+            return method, self._get_response(ints, self.intents)
         else:
             return False, self._get_response(ints, self.intents)

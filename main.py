@@ -7,7 +7,7 @@ if __name__ == '__main__':
         'set_volume': "set_volume",
         'set_rate'  : "set_rate",
         'set_name'  : "set_name",
-        'calibrate' : "_calibrate",
+        'calibrate' : "recalibrate",
         'speak_time': "speak_time",
         'tell_joke' : "tell_joke",
         'stop_assist': "quit_program"
