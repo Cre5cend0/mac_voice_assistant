@@ -16,7 +16,8 @@ classifiers = [
     "Operating System :: MacOS :: MacOS X",
     "Environment :: Web Environment",
     "Intended Audience :: Developers",
-    "Topic :: Software Development :: Voice Assistant",
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Software Development :: Libraries :: Python Modules"
     ]
 keywords=['python', 'mac', 'voice', 'assistant']
 dependencies = [
