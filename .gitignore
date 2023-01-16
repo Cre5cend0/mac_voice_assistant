@@ -11,3 +11,5 @@ build
 mac_voice_assistant.egg-info
 credentials.py
 threadpool.py
+*.log
+intents.json
