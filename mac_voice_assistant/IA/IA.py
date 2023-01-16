@@ -50,9 +50,11 @@ class GenericAssistant(IAssistant):
 
     def __init__(self, intents, intent_methods={}, model_name="assistant_model"):
         self.intents = intents
+        self.default_intents = json.loads(open('mac_voice_assistant/default_intents.json').read())
         self.intent_methods = intent_methods
         self.model_name = model_name
         self.log = log
+
         # Initialize queue instances
         self.tasks = Queue(maxsize=20)
         self.audio_queue = Queue(maxsize=20)
@@ -69,6 +71,8 @@ class GenericAssistant(IAssistant):
 
     def load_json_intents(self, intents):
         self.intents = json.loads(open(intents).read())
+        for my_dict in self.default_intents['intents']:
+            self.intents['intents'].append(my_dict)
 
     def train_model(self):
 
