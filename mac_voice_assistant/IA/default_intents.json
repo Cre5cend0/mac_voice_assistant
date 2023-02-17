@@ -1,0 +1,58 @@
+{"intents": [
+  {"tag": "converse",
+    "patterns": ["Mac", "Is anyone there?", "Hey", "mach"],
+    "responses": ["Yes sir?"],
+    "context_set": ""
+  },
+  {"tag": "greeting",
+    "patterns": ["Hi Mac", "How are you", "Hello", "Whats up", "imac", "hi mach"],
+    "responses": ["Hi Manish", "Hello!", "Good to see you again!", "Hi there, how can I help?"],
+    "context_set": ""
+  },
+  {"tag": "stop_assist",
+    "patterns": ["cya", "See you later", "Goodbye", "I am Leaving", "Have a Good day", "bye", "see ya", "quit"],
+    "responses": ["Talk to you later", "Goodbye!"],
+    "context_set": ""
+  },
+  {"tag": "random",
+    "patterns": ["wassup", "say something", "how's life"],
+    "responses": ["Life could be a dream", "Just another day in paradise", "Excellent"],
+    "context_set": ""
+  },
+  {"tag": "set_volume",
+    "patterns": ["change my volume", "reduce volume", "set volume", "increase volume"],
+    "responses": [],
+    "context_set": ""
+  },
+  {"tag": "set_name",
+    "patterns": ["rename", "change your name"],
+    "responses": [],
+    "context_set": ""
+  },
+    {"tag": "set_rate",
+    "patterns": ["change rate", "speak slowly", "speak fast", "set rate"],
+    "responses": [],
+    "context_set": ""
+  },
+  {"tag": "set_voice",
+    "patterns": ["Change your voice", "do you have other voices?", "why the accent?"],
+    "responses": [],
+    "context_set": ""
+  },
+  {"tag": "calibrate",
+    "patterns": ["calibrate", "recalibrate", "You're not understanding", "what are you talking about?"],
+    "responses": ["Please let me calibrate your voice again"],
+    "context_set": ""
+  },
+  {"tag": "speak_time",
+    "patterns": ["What's the time?", "May I know the time, please?"],
+    "responses": [],
+    "context_set": ""
+  },
+  {"tag": "tell_joke",
+    "patterns": ["I'm bored", "Say something funny", "Make me laugh", "Tell me a joke"],
+    "responses": [],
+    "context_set": ""
+  }
+]
+}

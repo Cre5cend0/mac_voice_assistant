@@ -9,9 +9,9 @@ def read(file_name):
 
 setup(
     name='mac_voice_assistant',
-    version='0.2.9',
+    version='0.3.1',
     packages=find_packages(),
-    package_data={'mac_voice_assistant': ['audio_samples/beep.wav', 'default_intents.json']},
+    package_data={'mac_voice_assistant': ['audio_samples/beep.wav', 'IA/default_intents.json']},
     url='https://pypi.org/project/mac-voice-assistant/',
     author='Manish Raj',
     author_email='manishraj1.618@gmail.com',

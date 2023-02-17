@@ -1,19 +1,11 @@
 
-from mac_voice_assistant.AI import Assistant
 
 if __name__ == '__main__':
-    mac = Assistant('mac_voice_assistant/default_intents.json', model_name='mac')
-    mappings = {
-        'set_volume': "set_volume",
-        'set_rate'  : "set_rate",
-        'set_name'  : "set_name",
-        'calibrate' : "recalibrate",
-        'speak_time': "speak_time",
-        'tell_joke' : "tell_joke",
-        'stop_assist': "quit_program"
-    }
+    from mac_voice_assistant.AI import Assistant
+    mac = Assistant('mac_voice_assistant/intents.json', model_name='mac')
     # Required methods ##Do not remove
-    mac.set_intent_methods(mappings)
+    # custom = {}
+    # mac.set_intent_methods(custom)
     mac.train_model()
     mac.save_model()
     mac.load_model()

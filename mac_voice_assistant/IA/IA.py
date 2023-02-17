@@ -4,6 +4,7 @@ import json
 import pickle
 import numpy as np
 import os
+import sys
 
 # If you're using TensorFlow => 2.0, make sure to put these lines before importing tensorflow to be effective.
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Change 3 to values (0, 1, 2, 3) according to the messages you want avoid.
@@ -48,11 +49,10 @@ class IAssistant(metaclass=ABCMeta):
 
 class GenericAssistant(IAssistant):
 
-    def __init__(self, intents, intent_methods={}, model_name="assistant_model"):
-        self.intents = intents
-        self.intent_methods = intent_methods
+    def __init__(self, intents, intent_methods=None, model_name="assistant_model"):
         self.model_name = model_name
         self.log = log
+
         # Initialize queue instances
         self.tasks = Queue(maxsize=20)
         self.audio_queue = Queue(maxsize=20)
@@ -62,13 +62,35 @@ class GenericAssistant(IAssistant):
         # Initialize thread pool instance
         self.thread_pool = ThreadPool(processes=10)
 
-        if intents.endswith(".json"):
-            self.load_json_intents(intents)
+        # Initialize intents files
+        if intent_methods is None:
+            intent_methods = {}
+        self.intents = intents
+        self.intent_methods = intent_methods
+        self.default_intents_file_path = 'mac_voice_assistant/IA/default_intents.json'
+
+        self.load_default_intents()
+        self.load_custom_intents(intents)
 
         self.lemmatizer = WordNetLemmatizer()
 
-    def load_json_intents(self, intents):
-        self.intents = json.loads(open(intents).read())
+    def get_default_intents_file_path(self):
+        default_file_path = self.default_intents_file_path
+        if os.path.exists(default_file_path):
+            return default_file_path
+        else:
+            for path in sys.path:
+                if 'site-packages' in path:
+                    return path + '/mac_voice_assistant/IA/default_intents.json'
+
+    def load_default_intents(self):
+        path = self.get_default_intents_file_path()
+        self.intents = json.loads(open(path).read())
+
+    def load_custom_intents(self, intents):
+        custom_intents = json.loads(open(intents).read())
+        for intent in custom_intents['intents']:
+            self.intents['intents'].append(intent)
 
     def train_model(self):
 

@@ -13,13 +13,13 @@ from playsound import playsound
 
 
 class Assistant(GenericAssistant):
-    def __init__(self, intents, intent_methods={}, model_name="assistant_model"):
+    def __init__(self, intents, intent_methods=None, model_name="assistant_model"):
         super().__init__(intents, intent_methods, model_name)
 
         # Initialize Recognizer and Microphone instances
         self.recognizer = sr.Recognizer()
         self.microphone = sr.Microphone()
-        self.recognizer.energy_threshold = 700
+        self.recognizer.energy_threshold = 100
         self.recognizer.dynamic_energy_threshold = True
         self.recognizer.dynamic_energy_adjustment_damping = 0.15
         self.recognizer.dynamic_energy_adjustment_ratio = 1.5
@@ -27,7 +27,8 @@ class Assistant(GenericAssistant):
 
         # Initialize speech engine instance
         self.engine = tts.init()
-        self.default_speak_rate = 160
+        rate = self.engine.getProperty('rate')
+        self.default_speak_rate = rate - 40
         self.default_voice = 2
         self.engine.setProperty('rate', self.default_speak_rate)
         self.speech_voices = self.engine.getProperty('voices')
@@ -39,10 +40,28 @@ class Assistant(GenericAssistant):
         self.LISTENING = False
         self.STOP_LISTENING = False
         self.audio_file_path = 'mac_voice_assistant/audio_samples/beep.wav'
+        self.set_audio_file_path()
+
+        self.mappings = {
+            'set_volume' : self.set_volume,
+            'set_voice'  : self.set_voice,
+            'set_rate'   : self.set_rate,
+            'set_name'   : self.set_name,
+            'calibrate'  : self.recalibrate,
+            'speak_time' : self.speak_time,
+            'tell_joke'  : self.tell_joke,
+            'stop_assist': self.quit_program
+        }
+        self.set_default_intent_methods()
 
     #  +++++++++++++++++++ Core methods  +++++++++++++++++++++++ #
     def set_intent_methods(self, intent_methods):
-        self.intent_methods = intent_methods
+        for key, value in intent_methods.items():
+            self.intent_methods[key] = value
+
+    def set_default_intent_methods(self):
+        for key, value in self.mappings.items():
+            self.intent_methods[key] = value
 
     def get_audio_files_path(self):
         default_audio_path = self.audio_file_path
@@ -53,37 +72,18 @@ class Assistant(GenericAssistant):
                 if 'site-packages' in path:
                     return path + '/mac_voice_assistant/audio_samples/beep.wav'
 
-    def set_audio_file_path(self, path):
+    def set_audio_file_path(self, path='default'):
+        if path == 'default':  # for custom audio sounds, override this path with the file of your choice during setup
+            path = self.get_audio_files_path()
         self.audio_file_path = path
 
     def calibrate(self):
-        while not self.CALIBRATED:
-            with self.microphone as source:
-                print("We need to calibrate your voice at least once before we start the program.")
-                sleep(2)
-                print(
-                    "To calibrate your voice, please speak the following after the beep: 'A quick brown fox jumped "
-                    "over the lazy dog'")
-                sleep(2)
-                playsound(self.audio_file_path)
-                self.recognizer.adjust_for_ambient_noise(source, duration=1)
-                audio = self.recognizer.listen(source)
-
-            print('Calibrating voice')
-            try:
-                text = self.recognizer.recognize_google(audio)
-                if text:
-                    self.CALIBRATED = True
-                    print(f'You said: {text}')
-                    print('Voice calibrated')
-                    break
-            except sr.UnknownValueError:
-                print("Unable to comprehend. Try again.")
-                self.log.info("UnknownValueError")
-                continue
-            except sr.RequestError as e:
-                print(f"Could not request results from Speech Recognition service: {e}")
-                self.log.error("RequestError", exc_info=True)
+        print('Adjusting for ambient noise')
+        with self.microphone as source:
+            print("Please do not speak during calibration")
+            sleep(2)
+            self.recognizer.adjust_for_ambient_noise(source, duration=1)
+        print('Calibrated, you can speak after the beep.')
 
     def run(self):
         playsound(self.audio_file_path)
@@ -113,18 +113,29 @@ class Assistant(GenericAssistant):
             except KeyboardInterrupt:
                 break
 
-    def listen(self):
+    def listen(self, timeout=5, phrase_time_limit=3):
         with self.microphone as source:
             self.log.debug('listen thread started')
-            audio = self.recognizer.listen(source)  # listen and put the resulting audio on the audio processing queue
+            try:
+                audio = self.recognizer.listen(source, timeout=timeout, phrase_time_limit=phrase_time_limit)  # listen and put the resulting audio on the audio processing queue
+            except sr.WaitTimeoutError:
+                self.log.info('Microphone timed out, retrying...')
+                audio = self.recognizer.listen(source, timeout=timeout, phrase_time_limit=phrase_time_limit)
             self.audio_queue.put(audio)
             result = self.thread_pool.apply_async(self.recognize)
             result.wait(timeout=5)
             self.log.debug('listen thread ended')
 
-    def listen_for_audio(self):
+    def listen_for_audio(self, timeout=5, phrase_time_limit=3):
         with self.microphone as source:
-            audio = self.recognizer.listen(source)
+            self.log.debug("Listening for audio")
+            try:
+                playsound(self.audio_file_path)
+                audio = self.recognizer.listen(source, timeout=timeout, phrase_time_limit=phrase_time_limit)
+            except sr.WaitTimeoutError:
+                self.log.info('Microphone timed out, retrying...')
+                audio = self.recognizer.listen(source, timeout=timeout, phrase_time_limit=phrase_time_limit)
+            self.log.debug("Finished listening for audio")
             return audio
 
     def recognize(self):
@@ -150,14 +161,15 @@ class Assistant(GenericAssistant):
     def transcribe(self, audio):
         text = None
         try:
+            self.log.debug("Transcribing for text")
             text = self.recognizer.recognize_google(audio)
         except sr.UnknownValueError:
             self.log.debug("Audio Unrecognized")
-            print(f"{sr.UnknownValueError}:Could not recognize audio")
         except sr.RequestError as e:
             print(f"Could not request results from Google Speech Recognition service: {e}")
             self.log.error("RequestError", exc_info=True)
         finally:
+            self.log.debug("Finished transcribing for text")
             return text
 
     def process(self, command=None):
@@ -216,18 +228,15 @@ class Assistant(GenericAssistant):
         self.log.debug('worker thread called')
         if task is None:
             task = self.tasks.get(block=True, timeout=None)
-            result = eval("self." + task + "()")
+            result = task()
             self.tasks.task_done()
         else:
-            result = eval("self." + task + "()")
+            result = task()
         self.log.debug('worker thread ended')
         return result
 
     def assist(self):
-        path = self.get_audio_files_path()
-        self.set_audio_file_path(path)
-        # if not self.CALIBRATED:
-        #     self.calibrate()
+        self.calibrate()
         self.run()
 
     def set_name(self):
@@ -245,13 +254,59 @@ class Assistant(GenericAssistant):
         sys.exit(0)
 
     #  +++++++++++++++++++ Speech methods  +++++++++++++++++++++++ #
-    def set_rate(self, wpm=160):  # setting default speech rate for assistant
+    def set_rate(self, wpm=160):  # setting speech rate for assistant
         self.engine.setProperty('rate', wpm)
         print('Setting rate done')
 
-    def set_voice(self, index=2):  # setting default voice for assistant
-        speech_voices = self.engine.getProperty('voices')
-        self.engine.setProperty('voice', speech_voices[index].id)
+    def set_voice(self):  # setting voice for assistant
+        changed = False
+        selected = []
+        self.speak("Let me say a phrase in every available voice, and you can pick one you like.")
+        for i in range(len(self.speech_voices)):
+            self.engine.setProperty('voice', self.speech_voices[i].id)
+            print(self.speech_voices[i])
+            self.speak("This is the best route. Keep your horse to this path, and you'll be fine.")
+            self.speak('Shall I set this voice?')
+            audio = self.listen_for_audio()
+            text = self.transcribe(audio)
+            if text:
+                print(text)
+                if 'yes' in text.lower() or 'okay' in text.lower():
+                    self.engine.setProperty('voice', self.speech_voices[i].id)
+                    changed = True
+                    self.speak('Very well, hope you like my new voice.')
+                    break
+                elif 'maybe' in text.lower():
+                    selected.append(i)
+                    continue
+                elif "that's enough" in text.lower():
+                    break
+                else:
+                    continue
+        if len(selected) > 0:
+            self.speak("Would you like to hear the shortlisted ones?")
+            audio = self.listen_for_audio()
+            text = self.transcribe(audio)
+            if text:
+                if 'yes' in text.lower() or 'okay' in text.lower():
+                    for i in selected:
+                        self.speak("After you cross the creek, be careful. Large roots come up out of the ground.")
+                        self.speak('Shall I set this voice?')
+                        audio = self.listen_for_audio()
+                        text = self.transcribe(audio)
+                        if text:
+                            print(text)
+                            if 'yes' in text.lower() or 'okay' in text.lower():
+                                self.engine.setProperty('voice', self.speech_voices[i].id)
+                                changed = True
+                                self.speak('Very well, hope you like my new voice.')
+                                break
+                            elif "that's enough" in text.lower():
+                                break
+                            else:
+                                continue
+        if not changed:
+            self.engine.setProperty('voice', self.speech_voices[self.default_voice].id)  # revert to default voice
 
     def set_volume(self, level=0.7):
         self.speak('What shall I set the volume to?')
