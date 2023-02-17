@@ -13,7 +13,7 @@ from playsound import playsound
 
 
 class Assistant(GenericAssistant):
-    def __init__(self, intents, intent_methods={}, model_name="assistant_model"):
+    def __init__(self, intents, intent_methods=None, model_name="assistant_model"):
         super().__init__(intents, intent_methods, model_name)
 
         # Initialize Recognizer and Microphone instances
@@ -40,6 +40,7 @@ class Assistant(GenericAssistant):
         self.LISTENING = False
         self.STOP_LISTENING = False
         self.audio_file_path = 'mac_voice_assistant/audio_samples/beep.wav'
+        self.set_audio_file_path()
 
         self.mappings = {
             'set_volume' : self.set_volume,
@@ -51,6 +52,7 @@ class Assistant(GenericAssistant):
             'tell_joke'  : self.tell_joke,
             'stop_assist': self.quit_program
         }
+        self.set_default_intent_methods()
 
     #  +++++++++++++++++++ Core methods  +++++++++++++++++++++++ #
     def set_intent_methods(self, intent_methods):
@@ -70,7 +72,9 @@ class Assistant(GenericAssistant):
                 if 'site-packages' in path:
                     return path + '/mac_voice_assistant/audio_samples/beep.wav'
 
-    def set_audio_file_path(self, path):
+    def set_audio_file_path(self, path='default'):
+        if path == 'default':  # for custom audio sounds, override this path with the file of your choice during setup
+            path = self.get_audio_files_path()
         self.audio_file_path = path
 
     def calibrate(self):
@@ -232,10 +236,7 @@ class Assistant(GenericAssistant):
         return result
 
     def assist(self):
-        path = self.get_audio_files_path()
-        self.set_audio_file_path(path)
         self.calibrate()
-        self.set_default_intent_methods()
         self.run()
 
     def set_name(self):
