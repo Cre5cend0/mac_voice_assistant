@@ -13,3 +13,4 @@ credentials.py
 threadpool.py
 *.log
 intents.json
+*.keras

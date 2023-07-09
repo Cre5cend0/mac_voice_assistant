@@ -9,7 +9,7 @@ def read(file_name):
 
 setup(
     name='mac_voice_assistant',
-    version='0.3.1',
+    version='0.3.2',
     packages=find_packages(),
     package_data={'mac_voice_assistant': ['audio_samples/beep.wav', 'IA/default_intents.json']},
     url='https://pypi.org/project/mac-voice-assistant/',

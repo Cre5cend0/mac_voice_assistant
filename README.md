@@ -14,7 +14,7 @@ Run this if you do not have brew installed already
 Please ensure Xcode packages are up-to-date. Try running
 - `$ sudo xcodebuild -license`
 - `$ xcodebuild -runFirstLaunch`
-- 
+
 ### 3. Portaudio
 `$ brew install portaudio`
 
@@ -29,12 +29,41 @@ If Pyaudio could not be installed with the default pip install command, try the 
 ### 5. `Finally` Mac Voice Assistant
 `$ pip install mac_voice_assistant`
 
-## Additionally:
+## Debug:
 ____________
 - If you run into SSL certification error, search for `Certificates.command` in spotlight and open the file. 
 It should install the necessary certificates
 
-> The downloader script is broken. As a temporal workaround can manually download the punkt tokenizer from here and 
+- If voice is crackling or robotic, it is because the default voice might not be available on your local machine.
+Follow the steps in the below link to add voices to your Mac, or change to one you have on your system already. 
+Later Update self.default_voice with the desired voice.id
+> https://support.apple.com/en-gb/guide/mac-help/mchlp2290/mac#:~:text=Add%20a%20new%20voice,may%20need%20to%20scroll%20down.)
+
+- There are a few known issues with NSSS.py and pysstx3.py on macOS Ventura. 
+Until we receive an update with those fixes, below is a temporary workaround for the errors in init stage.
+
+In pyttsx3/drivers/nsss.py:
+```
+def _toVoice(self, attr) method:
+    Replace:
+         return Voice(attr['VoiceIdentifier'], attr['VoiceName'],
+            [lang], attr['VoiceGender'],
+            attr['VoiceAge'])
+    With:
+        return Voice(attr.get('VoiceIdentifier'), attr.get('VoiceName'),
+            [attr.get('VoiceLocaleIdentifier', attr.get('VoiceLanguage'))], attr.get('VoiceGender'),
+            attr.get('VoiceAge'))
+```
+
+```
+class NSSpeechDriver(NSObject):
+    Replace:
+        self = super(NSSpeechDriver, self).init()
+    With:
+        self = objc.super(NSSpeechDriver, self).init()
+```
+
+> If the downloader script is broken. As a temporal workaround can manually download the punkt tokenizer from here and 
 >then place the unzipped folder in the corresponding location. 
 >The default folders for each OS are:
 > 
