@@ -19,5 +19,3 @@ setup(
     long_description=read('README.md'),
     keywords="mac voice assistant",
 )
-
-

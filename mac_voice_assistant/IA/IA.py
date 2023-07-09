@@ -19,9 +19,9 @@ from tensorflow.keras.layers import Dense, Dropout
 from tensorflow.keras.optimizers import SGD
 from tensorflow.keras.models import load_model
 
+nltk.download('punkt', quiet=True)
+nltk.download('wordnet', quiet=True)
 
-# nltk.download('punkt', quiet=True)
-# nltk.download('wordnet', quiet=True)
 
 class IAssistant(metaclass=ABCMeta):
 
@@ -127,11 +127,11 @@ class GenericAssistant(IAssistant):
 
     def save_model(self, model_name=None):
         if model_name is None:
-            self.model.save(f"{self.model_name}.h5", self.hist)
+            self.model.save(f"{self.model_name}.keras", self.hist)
             pickle.dump(self.words, open(f'{self.model_name}_words.pkl', 'wb'))
             pickle.dump(self.classes, open(f'{self.model_name}_classes.pkl', 'wb'))
         else:
-            self.model.save(f"{model_name}.h5", self.hist)
+            self.model.save(f"{model_name}.keras", self.hist)
             pickle.dump(self.words, open(f'{model_name}_words.pkl', 'wb'))
             pickle.dump(self.classes, open(f'{model_name}_classes.pkl', 'wb'))
 
@@ -139,11 +139,11 @@ class GenericAssistant(IAssistant):
         if model_name is None:
             self.words = pickle.load(open(f'{self.model_name}_words.pkl', 'rb'))
             self.classes = pickle.load(open(f'{self.model_name}_classes.pkl', 'rb'))
-            self.model = load_model(f'{self.model_name}.h5')
+            self.model = load_model(f'{self.model_name}.keras')
         else:
             self.words = pickle.load(open(f'{model_name}_words.pkl', 'rb'))
             self.classes = pickle.load(open(f'{model_name}_classes.pkl', 'rb'))
-            self.model = load_model(f'{model_name}.h5')
+            self.model = load_model(f'{model_name}.keras')
 
     def _clean_up_sentence(self, sentence):
         sentence_words = nltk.word_tokenize(sentence)
