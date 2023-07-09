@@ -1,7 +1,7 @@
 
-from mac_voice_assistant.AI import Assistant
 
 if __name__ == '__main__':
+    from mac_voice_assistant.AI import Assistant
     mac = Assistant('mac_voice_assistant/intents.json', model_name='mac')
     # Required methods ##Do not remove
     # custom = {}
