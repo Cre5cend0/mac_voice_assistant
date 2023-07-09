@@ -29,7 +29,7 @@ class Assistant(GenericAssistant):
         self.engine = tts.init()
         rate = self.engine.getProperty('rate')
         self.default_speak_rate = rate - 40
-        self.default_voice = 2
+        self.default_voice = 83
         self.engine.setProperty('rate', self.default_speak_rate)
         self.speech_voices = self.engine.getProperty('voices')
         self.engine.setProperty('voice', self.speech_voices[self.default_voice].id)
