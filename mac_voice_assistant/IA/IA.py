@@ -5,6 +5,7 @@ import pickle
 import numpy as np
 import os
 
+
 # If you're using TensorFlow => 2.0, make sure to put these lines before importing tensorflow to be effective.
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Change 3 to values (0, 1, 2, 3) according to the messages you want avoid.
 
@@ -13,6 +14,7 @@ from abc import ABCMeta, abstractmethod
 from queue import Queue
 from multiprocessing.pool import ThreadPool
 from ..utils.logger import log
+from ..utils.workers import WorkerBox
 from nltk.stem import WordNetLemmatizer
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
@@ -57,12 +59,13 @@ class GenericAssistant(IAssistant):
 
         # Initialize queue instances
         self.tasks = Queue(maxsize=20)
-        self.audio_queue = Queue(maxsize=20)
         self.commands = Queue(maxsize=20)
         self.responses = Queue(maxsize=20)
+        self.audio_queue = Queue(maxsize=20)
 
         # Initialize thread pool instance
-        self.thread_pool = ThreadPool(processes=10)
+        # self.thread_pool = ThreadPool(processes=10)
+        self.workerbox = WorkerBox(workers=5)
 
         if intents.endswith(".json"):
             self.load_json_intents(intents)

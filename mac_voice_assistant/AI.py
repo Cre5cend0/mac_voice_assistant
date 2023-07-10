@@ -1,6 +1,7 @@
 import datetime
 import os
 import sys
+
 import pyjokes
 import playsound
 import pyttsx3 as tts
@@ -29,7 +30,7 @@ class Assistant(GenericAssistant):
         self.engine = tts.init()
         rate = self.engine.getProperty('rate')
         self.default_speak_rate = rate - 40
-        self.default_voice = 83
+        self.default_voice = 84
         self.engine.setProperty('rate', self.default_speak_rate)
         self.speech_voices = self.engine.getProperty('voices')
         self.engine.setProperty('voice', self.speech_voices[self.default_voice].id)
@@ -42,13 +43,13 @@ class Assistant(GenericAssistant):
         self.audio_file_path = 'mac_voice_assistant/audio_samples/beep.wav'
 
         self.mappings = {
-            'set_volume' : self.set_volume,
-            'set_voice'  : self.set_voice,
-            'set_rate'   : self.set_rate,
-            'set_name'   : self.set_name,
-            'calibrate'  : self.recalibrate,
-            'speak_time' : self.speak_time,
-            'tell_joke'  : self.tell_joke,
+            'set_volume': self.set_volume,
+            'set_voice': self.set_voice,
+            'set_rate': self.set_rate,
+            'set_name': self.set_name,
+            'calibrate': self.recalibrate,
+            'speak_time': self.speak_time,
+            'tell_joke': self.tell_joke,
             'stop_assist': self.quit_program
         }
 
@@ -82,47 +83,35 @@ class Assistant(GenericAssistant):
         print('Calibrated, you can speak after the beep.')
 
     def run(self):
+
+        # activate worker box in background thread
+        queues = [self.audio_queue, self.commands, self.tasks, self.responses]
+        methods = [self.recognize, self.process, self.execute_task, self.speak]
+        self.workerbox.trigger_background_worker(self.workerbox.activate, args=(queues, methods), name="worker_thread")
+
+        # start listening after the beep
         playsound(self.audio_file_path)
         while True:
-            text = None
-            task = None
             try:
-                try:
-                    text = self.responses.get_nowait()
-                except Empty:
-                    pass
-
-                try:
-                    task = self.tasks.get_nowait()
-                except Empty:
-                    pass
-
-                if text:
-                    self.speak(text)
-                    self.responses.task_done()
-                if task:
-                    self.execute_task(task)
-                    self.tasks.task_done()
-
                 self.listen()
-
             except KeyboardInterrupt:
                 break
 
-    def listen(self, timeout=5, phrase_time_limit=3):
+    def listen(self, timeout=5, phrase_time_limit=10):
         with self.microphone as source:
-            self.log.debug('listen thread started')
-            try:
-                audio = self.recognizer.listen(source, timeout=timeout, phrase_time_limit=phrase_time_limit)  # listen and put the resulting audio on the audio processing queue
+            self.log.debug('listening')
+            self.LISTENING = True
+            try:  # listen and put the resulting audio on the audio processing queue
+                audio = self.recognizer.listen(source, timeout=timeout, phrase_time_limit=phrase_time_limit)
+                self.LISTENING = False
             except sr.WaitTimeoutError:
                 self.log.info('Microphone timed out, retrying...')
                 audio = self.recognizer.listen(source, timeout=timeout, phrase_time_limit=phrase_time_limit)
+                self.LISTENING = False
             self.audio_queue.put(audio)
-            result = self.thread_pool.apply_async(self.recognize)
-            result.wait(timeout=5)
-            self.log.debug('listen thread ended')
+            self.log.debug('listening ended')
 
-    def listen_for_audio(self, timeout=5, phrase_time_limit=3):
+    def listen_for_audio(self, timeout=5, phrase_time_limit=10):
         with self.microphone as source:
             self.log.debug("Listening for audio")
             try:
@@ -144,7 +133,7 @@ class Assistant(GenericAssistant):
             # segment = audio.get_segment(start_ms=0, end_ms=4000)
             text = self.recognizer.recognize_google(audio)
             if len(text) > 0:
-                self.process(text.lower())
+                self.commands.put(text.lower())
         except sr.UnknownValueError:
             self.log.debug("Unrecognized command")
         except sr.RequestError as e:
@@ -170,34 +159,26 @@ class Assistant(GenericAssistant):
 
     def process(self, command=None):
         self.log.debug('process thread called')
+        deamon_thread = False
         if command is None:
             command = self.commands.get(block=True, timeout=10)
-            self.log.debug(f'Executing command:{command}')
-            response = self.request(command)
-            self.log.debug(f'Getting response:{response}')
-            method = response[0]
-            text = response[1]
-            if method and (text == '' or text is None):
-                self.tasks.put(method)
-            elif method:
-                self.tasks.put(method)
-                self.responses.put(text)
-            elif not method:
-                self.responses.put(text)
+            deamon_thread = True
+
+        self.log.debug(f'Executing command:{command}')
+        response = self.request(command)
+        self.log.debug(f'Getting response:{response}')
+        method = response[0]
+        text = response[1]
+        if method and (text == '' or text is None):
+            self.tasks.put(method)
+        elif method:
+            self.tasks.put(method)
+            self.responses.put(text)
+        elif not method:
+            self.responses.put(text)
+
+        if deamon_thread:
             self.commands.task_done()
-        else:
-            self.log.debug(f'Executing command:{command}')
-            response = self.request(command)
-            self.log.debug(f'Getting response:{response}')
-            method = response[0]
-            text = response[1]
-            if method and (text == '' or text is None):
-                self.tasks.put(method)
-            elif method:
-                self.tasks.put(method)
-                self.responses.put(text)
-            elif not method:
-                self.responses.put(text)
         self.log.debug('process thread ended')
 
     def speak(self, text=None):
@@ -207,6 +188,7 @@ class Assistant(GenericAssistant):
         def onEnd(name, completed):
             self.SPEAKING = False
             self.log.debug('finished speaking')
+            return
 
         if text is None:
             text = self.responses.get(block=True, timeout=10)
@@ -232,6 +214,9 @@ class Assistant(GenericAssistant):
         return result
 
     def assist(self):
+        self.train_model()
+        self.save_model()
+        self.load_model()
         path = self.get_audio_files_path()
         self.set_audio_file_path(path)
         self.calibrate()
@@ -249,7 +234,6 @@ class Assistant(GenericAssistant):
         pass
 
     def quit_program(self):
-        self.thread_pool.terminate()
         sys.exit(0)
 
     #  +++++++++++++++++++ Speech methods  +++++++++++++++++++++++ #
