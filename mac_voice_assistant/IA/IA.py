@@ -12,7 +12,6 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Change 3 to values (0, 1, 2, 3) acco
 import nltk
 from abc import ABCMeta, abstractmethod
 from queue import Queue
-from multiprocessing.pool import ThreadPool
 from ..utils.logger import log
 from ..utils.workers import WorkerBox
 from nltk.stem import WordNetLemmatizer
@@ -61,7 +60,7 @@ class GenericAssistant(IAssistant):
         self.tasks = Queue(maxsize=20)
         self.commands = Queue(maxsize=20)
         self.responses = Queue(maxsize=20)
-        self.audio_queue = Queue(maxsize=20)
+        self.recordings = Queue(maxsize=20)
 
         # Initialize thread pool instance
         # self.thread_pool = ThreadPool(processes=10)

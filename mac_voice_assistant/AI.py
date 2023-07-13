@@ -3,12 +3,10 @@ import os
 import sys
 
 import pyjokes
-import playsound
 import pyttsx3 as tts
 import speech_recognition as sr
 
 from time import sleep
-from queue import Empty
 from .IA.IA import GenericAssistant
 from playsound import playsound
 
@@ -85,19 +83,25 @@ class Assistant(GenericAssistant):
     def run(self):
 
         # activate worker box in background thread
-        queues = [self.audio_queue, self.commands, self.tasks, self.responses]
+        queues = [self.recordings, self.commands, self.tasks, self.responses]
         methods = [self.recognize, self.process, self.execute_task, self.speak]
-        self.workerbox.trigger_background_worker(self.workerbox.activate, args=(queues, methods), name="worker_thread")
 
         # start listening after the beep
         playsound(self.audio_file_path)
         while True:
+            status = self.workerbox.get_queue_status(queues)
+            print(status)
+            for s in status:
+                if s:
+                    print(s)
+                else:
+                    print("ok")
             try:
                 self.listen()
             except KeyboardInterrupt:
                 break
 
-    def listen(self, timeout=5, phrase_time_limit=10):
+    def listen(self, timeout=5, phrase_time_limit=3):
         with self.microphone as source:
             self.log.debug('listening')
             self.LISTENING = True
@@ -108,10 +112,10 @@ class Assistant(GenericAssistant):
                 self.log.info('Microphone timed out, retrying...')
                 audio = self.recognizer.listen(source, timeout=timeout, phrase_time_limit=phrase_time_limit)
                 self.LISTENING = False
-            self.audio_queue.put(audio)
+            self.recordings.put(audio)
             self.log.debug('listening ended')
 
-    def listen_for_audio(self, timeout=5, phrase_time_limit=10):
+    def listen_for_audio(self, timeout=5, phrase_time_limit=3):
         with self.microphone as source:
             self.log.debug("Listening for audio")
             try:
@@ -126,7 +130,7 @@ class Assistant(GenericAssistant):
     def recognize(self):
         # this runs in a background thread
         self.log.debug('recognizer thread called')
-        audio = self.audio_queue.get(block=True, timeout=10)  # retrieve next job from the main thread
+        audio = self.recordings.get(block=True, timeout=10)  # retrieve next job from the main thread
         # received audio data, now we'll recognize it using Google Speech Recognition
         try:
             # to use another API key, use `recogniser.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
@@ -140,7 +144,7 @@ class Assistant(GenericAssistant):
             print(f"Could not request results from Google Speech Recognition service: {e}")
             self.log.error("RequestError", exc_info=True)
         finally:
-            self.audio_queue.task_done()  # mark the audio processing job as completed in the queue
+            self.recordings.task_done()  # mark the audio processing job as completed in the queue
             self.log.debug('recognizer thread ended')
 
     def transcribe(self, audio):
@@ -159,10 +163,10 @@ class Assistant(GenericAssistant):
 
     def process(self, command=None):
         self.log.debug('process thread called')
-        deamon_thread = False
+        daemon_thread = False
         if command is None:
             command = self.commands.get(block=True, timeout=10)
-            deamon_thread = True
+            daemon_thread = True
 
         self.log.debug(f'Executing command:{command}')
         response = self.request(command)
@@ -177,7 +181,7 @@ class Assistant(GenericAssistant):
         elif not method:
             self.responses.put(text)
 
-        if deamon_thread:
+        if daemon_thread:
             self.commands.task_done()
         self.log.debug('process thread ended')
 
